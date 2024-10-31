@@ -57,7 +57,7 @@ from typing import reveal_type
 #
 # print("Done!")
 
-#answer = input("Choose \n1 to convert km -> miles \n2 to convert miles -> km: ")
+answer = input("Choose \n1 to convert km -> miles \n2 to convert miles -> km: ")
 
 
 # a == b
