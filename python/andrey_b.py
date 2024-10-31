@@ -67,13 +67,13 @@ answer = input("Choose \n1 to convert km -> miles \n2 to convert miles -> km: ")
 # a != b
 
 
-if answer == "1":
-    km = float(input("Enter km : "))
-    miles = km / 1.609
-    print(miles)
-elif answer == "2":
-    miles = float(input("Enter miles : "))
-    km = miles * 1.609
-    print(km)
-else:
-    print("Wrong input please try again")
+# if answer == "1":
+#     km = float(input("Enter km : "))
+#     miles = km / 1.609
+#     print(miles)
+# elif answer == "2":
+#     miles = float(input("Enter miles : "))
+#     km = miles * 1.609
+#     print(km)
+# else:
+#     print("Wrong input please try again")
