@@ -1,5 +1,4 @@
 # print("Hello World!")
-from typing import reveal_type
 
 # first_name = "Andrey"
 # last_name = 'Baykov'
@@ -59,7 +58,6 @@ from typing import reveal_type
 
 answer = input("Choose \n1 to convert km -> miles \n2 to convert miles -> km: ")
 
-
 # a == b
 # a < b
 # a > b
@@ -68,29 +66,67 @@ answer = input("Choose \n1 to convert km -> miles \n2 to convert miles -> km: ")
 # a != b
 
 
-#if answer == "1":
- #   km = float(input("Enter km : "))
-  #  miles = km / 1.609
-   # print(miles)
-#elif answer == "2":
+# if answer == "1":
+#   km = float(input("Enter km : "))
+#  miles = km / 1.609
+# print(miles)
+# elif answer == "2":
 #    miles = float(input("Enter miles : "))
 #    km = miles * 1.609
 #    print(km)
-#else:
- #   print("Wrong input please try again")
+# else:
+#   print("Wrong input please try again")
 
- #(c * 9/5)+32 = f
-#(f - 32) * 5/9 = c
+# (c * 9/5)+32 = f
+# (f - 32) * 5/9 = c
 
 # Instructions: need enter Type f== "fahrenheit" c== "celsius" and then need to enter number
 
 degreesType = input("type of degree: ")
 if degreesType == "f":
-   a = int(input("Pleas enter degree number: "))
-   print((a*9/5)+32)
+    a = int(input("Pleas enter degree number: "))
+    print((a * 9 / 5) + 32)
 elif degreesType == "c":
     b = int(input("Pleas enter degree number: "))
-    print((b-32)*5/9)
+    print((b - 32) * 5 / 9)
 elif degreesType != "f" and degreesType != "c":
     print("Invalid input")
+
+if answer == "1":
+    km = float(input("Enter km (0 - 1000): "))
+    if km < 0 or km > 1000:
+        print("Value out of range")
+    else:
+        miles = km / 1.609
+        print(miles)
+elif answer == "2":
+    miles = float(input("Enter miles (0 - 1000): "))
+    # if miles >= 0:
+    if miles >= 0 and miles <= 1000:
+        km = miles * 1.609
+        print(km)
+    else:
+        print("Value out of range")
+else:
+    print("Wrong input please try again")
+
+a:  bool = True
+b:  bool = False
+#
+# # AND
+# True True = True
+# False True = False
+# True False = False
+# False False = False
+#
+# # OR
+# True True = True
+# False True = True
+# True False = True
+# False False = False
+#
+# # NOT
+# not True = False
+# not False = True
+
 
