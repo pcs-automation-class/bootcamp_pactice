@@ -18,6 +18,7 @@ def wait_sec(context, sec):
     sleep(int(sec))
 
 
+
 @step('Click element "{xpath}"')
 def click_element(context, xpath):
     element = context.driver.find_element(By.XPATH, xpath)
