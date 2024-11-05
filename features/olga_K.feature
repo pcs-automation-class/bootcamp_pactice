@@ -23,3 +23,10 @@ Feature: Login Page Tests
     Then Type "houseattheocean@gmail.com" into "//input[@class = 'el-input__inner']"
     Then Click element "//button[text() = ' Send ']"
     Then Verify presents of element "//h5[text()='Please check your inbox. You will receive an email with instruction in case if such email exists in our DB ']"
+
+  Scenario: Login with empty credentials
+    Given Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
+    Then Wait 2 seconds
+    Then Click element "//button[@type = 'submit']"
+    Then Verify presents of element "//div[text() = 'Email is required']"
+    Then Verify presents of element "//div[text() = 'Password is required']"
