@@ -130,3 +130,6 @@ b:  bool = False
 # not False = True
 
 
+
+answer = input()
+
