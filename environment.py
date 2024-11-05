@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
+# from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options
 
 
@@ -14,6 +16,7 @@ def before_all(context):
 
     chrome_options = Options()
     context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    # context.driver = webdriver.Chrome(service=FirefoxService(GeckoDriverManager().install()), options=chrome_options)
     context.driver.maximize_window()
 
 
