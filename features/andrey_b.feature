@@ -14,7 +14,7 @@ Feature: Login Page Tests
     Then Verify presents of element "//h3[text()=' Your device ']"
 
 
-  Scenario: Incorrect credentials
+  Scenario: Login with incorrect credentials
     Given Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
 #    Then Wait 1 seconds
     Then Verify presents of element "//h5[text()='Login to Your Account']"
