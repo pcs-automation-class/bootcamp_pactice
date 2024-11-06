@@ -9,13 +9,13 @@ Feature: Login Page Tests
 #    Then Wait 1 seconds
     Then Type "catk.test@gmail.com" into "//input[@name='username']"
 #    Then Wait 1 seconds
-    Then Type "hr9rsHU6TnWDYnpy" into "//input[@name='password']"
+    Then Type "strongpassword" into "//input[@name='password']"
 #    Then Wait 1 seconds
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//h3[text()=' Your device ']"
 
 # username: catk.test@gmail.com
-# password:
+# password: strongpassword
 
 #   Add credentials to the URL
 #   full_url = f"https://{username}:{password}@{url}"
