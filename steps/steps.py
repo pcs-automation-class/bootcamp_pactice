@@ -45,3 +45,14 @@ def verify_presents_of_element(context, xpath):
     # elements = context.driver.find_elements(By.XPATH, xpath)
     elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
     assert len(elements) == 1
+
+
+@given('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(
+        u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+
+
