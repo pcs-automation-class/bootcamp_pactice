@@ -1,4 +1,4 @@
-#converter 
+#converter
 def convert(choice):
         if choice == 1:
                 n = float(input("Enter your °F: "))
@@ -37,6 +37,6 @@ while True:
         n = result = 0
         convert(choice)
         print_line()
-        answer = input("Do you want to continue? (y/n) : ")
+        answer = input("Do you want to continue? (y/n): ")
         if answer.lower() == "n":
                 break
