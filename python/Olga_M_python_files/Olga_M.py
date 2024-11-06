@@ -89,7 +89,7 @@ else:
 # print("Done!")
 
 
-# answer = input("Choose \n1 to convert km -> miles: \n2 to convert miles -> km: ")
+answer = input("Choose \n1 to convert km -> miles: \n2 to convert miles -> km: ")
 #
 # if answer == "1":
 #     km = float(input("Enter km: "))
@@ -101,3 +101,22 @@ else:
 #     print(km)
 # else:
 #     print("Wrong input please try again")
+
+# Lesson 9, 11/01/2024
+if answer == "1":
+    km = float(input("Enter km (0 - 1000):  "))
+    if km < 0 or km > 1000:
+        print("Value out of range")
+    else:
+        miles = km / 1.609
+        print(miles)
+elif answer == "2":
+    miles = float(input("Enter miles (0 - 1000):  "))
+    if miles >= 0 and miles <= 1000:
+        km = miles * 1.609
+        print(km)
+    else:
+        print("Value out of range")
+else:
+    print("Wrong input, please try again.")
+
