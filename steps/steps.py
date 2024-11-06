@@ -7,10 +7,16 @@ from selenium.webdriver.support.wait import WebDriverWait
 # from selenium.webdriver.common.keys import Keys
 
 
-@step('Open "{url}"')
-def open_url(context, url):
-    print(f"Opening url {url}")
-    context.driver.get(url)
+@step('Open "{env}" environment')
+def open_url(context, env):
+    # print(f"Opening url {url}")
+    environments = {
+        "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
+        "prod": "https://app.linkmygear.com",
+        # "qa": "https://test:FjeKB9ySMzwvDUs2XACpfu@qa.linkmygear.com",
+        # "uat": "https://test:FjeKB9ySMzwvDUs2XACpfu@uat.linkmygear.com"
+    }
+    context.driver.get(environments[env])
 
 
 @step('Wait {sec} seconds')
