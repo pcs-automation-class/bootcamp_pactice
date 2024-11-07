@@ -9,7 +9,7 @@ Feature: Login Page Tests
     Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
 #    Then Wait 1 seconds
     Then Type "1234567" into "//input[@name='password']"
-#    Then Wait 1 seconds
+    Then Wait 1 seconds
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//h3[text()=' Your device ']"
 
