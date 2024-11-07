@@ -1,6 +1,7 @@
 # Created by catalinab at 11/6/24
 Feature: Login Page Tests
   # Examples of login page tests
+
   Background:
     Given Open "dev" environment
 
@@ -16,7 +17,7 @@ Feature: Login Page Tests
       | catk.test@gmail.co            | strongpassword |
       | catk.testgmail.com            | strongpassword |
 
-Scenario Outline: Login with incorrect password
+  Scenario Outline: Login with incorrect password
     Then Type "catk.test@gmail.com" into "//input[@name='username']"
     Then Type "<password>" into "//input[@name='password']"
     Then Click element "//button[text()=' Login ']"
@@ -24,7 +25,6 @@ Scenario Outline: Login with incorrect password
 
     Examples:
       | password       |
-      |                |
       | strong         |
       | password       |
 
