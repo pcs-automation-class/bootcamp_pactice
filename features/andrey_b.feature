@@ -1,34 +1,30 @@
 Feature: Login Page Tests
   # Examples of login page tests
+  Background:
+    Given Open "dev" environment
+#    Then Verify presents of element "//h5[text()='Login to Your Account']"
 
   Scenario: Login with correct credentials
-    Given Open "dev" environment
-    Then Wait 1 seconds
-    Then Verify presents of element "//h5[text()='Login to Your Account']"
-#    Then Wait 1 seconds
     Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
-#    Then Wait 1 seconds
     Then Type "1234567" into "//input[@name='password']"
-    Then Wait 1 seconds
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//h3[text()=' Your device ']"
 
 
-  Scenario: Login with incorrect credentials
-    Given Open "dev" environment
-#    Then Wait 1 seconds
-    Then Verify presents of element "//h5[text()='Login to Your Account']"
-#    Then Wait 1 seconds
-    Then Type "pcs@gmail.com" into "//input[@name='username']"
-#    Then Wait 1 seconds
-    Then Type "hr9rsHU6TnWDYnpy" into "//input[@name='password']"
-#    Then Wait 1 seconds
+  Scenario Outline: Login with incorrect user name
+    Then Type "<username>" into "//input[@name='username']"
+    Then Type "<password>" into "//input[@name='password']"
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//p[text()='Invalid username or password']"
+    Examples:
+      | username                      | password         |
+      | pcs@gmail.com                 | hr9rsHU6TnWDYnpy |
+      | pcs.automationclass@gmail.com | 1234567          |
+      | pcs2@gmail.com                | hr9rsHU6TnWDYnpy |
 
 
-# username: pcs.automationclass+1@gmail.com
-# password: jnTVrm3cpLJfdsMk
-
-#   Add credentials to the URL
-#   full_url = f"https://{username}:{password}@{url}"
+  Scenario: Login with incorrect password
+    Then Type "pcs.automationclass+1@gmail.com" into "//input[@name='username']"
+    Then Type "2" into "//input[@name='password']"
+    Then Click element "//button[text()=' Login ']"
+    Then Verify presents of element "//p[text()='Invalid username or password']"
