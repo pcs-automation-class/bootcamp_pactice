@@ -3,7 +3,7 @@ Feature: Login Page Tests
   # Examples of login page tests
 
   Scenario: Login with correct credentials
-    Given Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
+    Given CK Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
 #    Then Wait 1 seconds
     Then Verify presents of element "//h5[text()='Login to Your Account']"
 #    Then Wait 1 seconds
