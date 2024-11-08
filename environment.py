@@ -23,10 +23,10 @@ def before_scenario(context, scenario):
     context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
     context.driver.maximize_window()
-#
-# def before_step(context, step):
-#     print("before_step")
-#
+
+def before_step(context, step):
+    print("before_step", step.name)
+
 #
 # def after_step(context, step):
 #     print("after_step")
