@@ -7,10 +7,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 # from selenium.webdriver.common.keys import Keys
 
 
-@step('Open "{url}"')
-def open_url(context, url):
-    print(f"Opening url {url}")
-    context.driver.get(url)
+@step('Open "{env}" environment')
+def open_url(context, env):
+    # print(f"Opening url {url}")
+    environments = {
+        "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
+        "prod": "https://app.linkmygear.com",
+        # "qa": "https://test:FjeKB9ySMzwvDUs2XACpfu@qa.linkmygear.com",
+        # "uat": "https://test:FjeKB9ySMzwvDUs2XACpfu@uat.linkmygear.com"
+    }
+    context.driver.get(environments[env])
+    label_xpath = "//h5[text()='Login to Your Account']"
+    verify_presents_of_element(context, label_xpath)
 
 
 @step('Wait {sec} seconds')
@@ -42,6 +50,18 @@ def verify_title(context, text):
 
 @step('Verify presents of element "{xpath}"')
 def verify_presents_of_element(context, xpath):
+    print(f"Verify element with xpath {xpath} presents")
     # elements = context.driver.find_elements(By.XPATH, xpath)
     elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
     assert len(elements) == 1
+
+
+@given('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(
+        u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+
+
