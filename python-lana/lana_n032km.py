@@ -19,14 +19,3 @@ else: print("Wrong input. Please try again")
 
 print("Done!")
 #boundary testing: (1 to 1000). We test -1, 0, 1, 500, 999, 1000, 1001
-# AND
-True and True = True
-True and False = False
-False and False = True
-# OR
-True or False = False
-True or True = True
-True or False = False
-#NOT
-!True = False
-!False = True

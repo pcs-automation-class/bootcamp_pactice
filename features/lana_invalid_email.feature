@@ -3,7 +3,7 @@ Feature: Login Page Tests
 
   Scenario: Scenario: Invalid email
 
-    Given Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
+    Given Open "dev" environment
     Then Wait 1 seconds
     Then Verify presents of element "//h5[text()='Login to Your Account']"
     Then Type "kiwi2+2@mailinator.com" into "//input[@name='username']"
