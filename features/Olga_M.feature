@@ -8,7 +8,6 @@ Feature: Login page tests
      Then Type "k38177348@gmail.com" into "//input[@name='username']"
      Then Type "k38ofe" into "//input[@name='password']"
      Then Click element "//button[text()=' Login ']"
-#    And Wait 2 seconds
      Then Verify presents of element "//h3[text()=' Your device ']"
 
   Scenario Outline: Login with invalid username (email)
