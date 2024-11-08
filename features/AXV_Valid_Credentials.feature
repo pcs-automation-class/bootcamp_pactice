@@ -4,13 +4,13 @@ Feature: Login Page Tests
   # Valid Credentials Test
 
   Scenario: Login with correct credentials
-    Given Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
-    Then Wait 3 seconds
+    Given Open "dev" environment
+    Then Wait 2 seconds
     Then Verify presents of element "//h5[text()='Login to Your Account']"
-    Then Wait 3 seconds
+    Then Wait 1 seconds
     Then Type "test.axv.2000@gmail.com" into "//input[@name='username']"
-    Then Wait 3 seconds
+    Then Wait 1 seconds
     Then Type "KgkbAz7RHCoVD7RE" into "//input[@name='password']"
-    Then Wait 3 seconds
+    Then Wait 1 seconds
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//h3[text()=' Your device ']"
