@@ -5,13 +5,13 @@ Feature: Login page tests
 
   Scenario: Login with correct credentials
      Then Verify presents of element "//h5[text()='Login to Your Account']"
-     And Wait 2 seconds
+#     And Wait 2 seconds
      Then Type "k38177348@gmail.com" into "//input[@name='username']"
-     And Wait 2 seconds
+#     And Wait 2 seconds
      Then Type "k38ofe" into "//input[@name='password']"
-     And Wait 2 seconds
+#     And Wait 2 seconds
      Then Click element "//button[text()=' Login ']"
-     And Wait 2 seconds
+#     And Wait 2 seconds
      Then Verify presents of element "//h3[text()=' Your device ']"
 
     Scenario Outline: Login with invalid username (email)
