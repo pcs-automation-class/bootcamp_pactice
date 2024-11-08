@@ -35,18 +35,6 @@ Feature: Login Page Tests
       | Skip                      | mCtwAtjpizSTWEz7  | //div[text()='Email is required'] | Skip                                 |
       | Skip                      | Skip              | //div[text()='Email is required'] | //div[text()='Password is required'] |
 
-  Scenario Outline: Login with empty user name and or password
-    Then Type "<username>" into "//input[@name='username']"
-    Then Type "<password>" into "//input[@name='password']"
-    Then Click element "//button[text()=' Login ']"
-    Then Verify presents of element "<xpath_username>"
-    Then Verify presents of element "<xpath_password>"
-    Examples:
-      | username      | password | xpath_username                    | xpath_password                       |
-      | pcs@gmail.com | Skip     | Skip                              | //div[text()='Password is required'] |
-      | Skip          | 1234567  | //div[text()='Email is required'] | Skip                                 |
-      | Skip          | Skip     | //div[text()='Email is required'] | //div[text()='Password is required'] |
-
   Scenario Outline: Login with incorrect credentials
     Then Type "<username>" into "//input[@type = 'text']"
     Then Type "<password>" into "//input[@type = 'password']"
