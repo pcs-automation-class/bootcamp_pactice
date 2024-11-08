@@ -1,7 +1,7 @@
 Feature: Login Page Tests
   Background:
     Given OK Open "dev" environment
-    Then OK Wait 2 seconds
+    Then OK Wait 1 seconds
   # Examples of login page tests
 
   Scenario: Login with correct credentials
