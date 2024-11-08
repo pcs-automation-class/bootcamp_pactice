@@ -26,7 +26,6 @@ def wait_sec(context, sec):
     sleep(int(sec))
 
 
-
 @step('Click element "{xpath}"')
 def click_element(context, xpath):
     element = context.driver.find_element(By.XPATH, xpath)
@@ -36,9 +35,10 @@ def click_element(context, xpath):
 
 @step('Type "{text}" into "{xpath}"')
 def type_text(context, text, xpath):
-    # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
-    element = context.driver.find_element(By.XPATH, xpath)
-    element.send_keys(text)
+    if text != "Skip":
+        # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        element = context.driver.find_element(By.XPATH, xpath)
+        element.send_keys(text)
 
 
 @step('Verify page by title "{text}"')
@@ -50,13 +50,16 @@ def verify_title(context, text):
 
 @step('Verify presents of element "{xpath}"')
 def verify_presents_of_element(context, xpath):
-    print(f"Verify element with xpath {xpath} presents")
-    # elements = context.driver.find_elements(By.XPATH, xpath)
-    elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
-    assert len(elements) == 1
+    if xpath != "Skip":
+        print(f"Verify element with xpath {xpath} presents")
+        # elements = context.driver.find_elements(By.XPATH, xpath)
+        elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+        assert len(elements) == 1
+    else:
+        print("Step is skipped")
 
 
-@given('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+@step('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
 def step_impl(context):
     """
     :type context: behave.runner.Context
