@@ -6,9 +6,12 @@ Feature: Login Page Tests
 #    Then Verify presents of element "//h5[text()='Login to Your Account']"
 
   Scenario: Login with correct credentials
-    Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
-    Then Type "1234567" into "//input[@name='password']"
+    Then Type "sambosr@gmailbrt.com" into "//input[@name='username']"
+    Then Wait 1 seconds
+    Then Type "awvgFjTtM5GVgr3m" into "//input[@name='password']"
+    Then Wait 1 seconds
     Then Click element "//button[text()=' Login ']"
+    Then Wait 1 seconds
     Then Verify presents of element "//h3[text()=' Your device ']"
 
 
@@ -21,11 +24,14 @@ Feature: Login Page Tests
       | username                      | password         |
       | pcs@gmail.com                 | hr9rsHU6TnWDYnpy |
       | pcs.automationclass@gmail.com | 1234567          |
-      | pcs2@gmail.com                | hr9rsHU6TnWDYnpy |
+      | sambosr@gmailbrt.com          | awvgFjTtM5GVgr3m |
 
 
   Scenario: Login with incorrect password
-    Then Type "pcs.automationclass+1@gmail.com" into "//input[@name='username']"
+    Then Type "sambosr@gmailbrt.com" into "//input[@name='username']"
+    Then Wait 1 seconds
     Then Type "2" into "//input[@name='password']"
+    Then Wait 1 seconds
     Then Click element "//button[text()=' Login ']"
+    Then Wait 1 seconds
     Then Verify presents of element "//p[text()='Invalid username or password']"
