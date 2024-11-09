@@ -1,21 +1,35 @@
 # Created by catalinak at 11/5/24
+login_background_feature
+
+# Created by catalinab at 11/6/24
 Feature: Login Page Tests
   # Examples of login page tests
 
-  Scenario: Login with correct credentials
+  Background:
     Given CK Open "dev" environment
-#    Then Wait 1 seconds
-    Then CK Verify presence of element "//h5[text()='Login to Your Account']"
-#    Then Wait 1 seconds
-    Then CK Type "catk.test@gmail.com" into "//input[@name='username']"
-#    Then Wait 1 seconds
-    Then CK Type "strongpassword" into "//input[@name='password']"
-#    Then Wait 1 seconds
+
+  Scenario Outline: Login with incorrect user name
+    Then CK Type "<username>" into "//input[@name='username']"
+    Then CK Type "<password>" into "//input[@name='password']"
     Then CK Click element "//button[text()=' Login ']"
-    Then CK Verify presence of element "//h3[text()=' Your device ']"
+    Then CK Verify presence of element "//p[text()='Invalid username or password']"
+
+    Examples:
+      | username                      | password       |
+      | catk.tes@gmail.com            | strongpassword |
+      | catk.test@gmail.co            | strongpassword |
+      | catk.testgmail.com            | strongpassword |
+
+  Scenario Outline: Login with incorrect password
+    Then CK Type "catk.test@gmail.com" into "//input[@name='username']"
+    Then CK Type "<password>" into "//input[@name='password']"
+    Then CK Click element "//button[text()=' Login ']"
+    Then CK Verify presence of element "//p[text()='Invalid username or password']"
+
+    Examples:
+      | password       |
+      | strong         |
+      | password       |
 
 # username: catk.test@gmail.com
 # password: strongpassword
-
-#   Add credentials to the URL
-#   full_url = f"https://{username}:{password}@{url}"
