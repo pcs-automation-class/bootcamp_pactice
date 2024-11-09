@@ -15,7 +15,7 @@ def open_url(context, env):
     }
     context.driver.get(environments[env])
     label_xpath = "//h5[text()='Login to Your Account']"
-    verify_presence_of_element(context, label_xpath)
+    verify_presents_of_element(context, label_xpath)
 
 
 @step('Wait {sec} seconds')
@@ -26,11 +26,14 @@ def wait_sec(context, sec):
 @step('Click element "{xpath}"')
 def click_element(context, xpath):
     element = context.driver.find_element(By.XPATH, xpath)
+    # element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    element.click()
     element.click()
 
 
 @step('Type "{text}" into "{xpath}"')
 def type_text(context, text, xpath):
+    # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
     element = context.driver.find_element(By.XPATH, xpath)
     element.send_keys(text)
 
@@ -39,16 +42,23 @@ def type_text(context, text, xpath):
 def verify_title(context, text):
     sleep(1)
     title = context.driver.title
-    assert title == text, f"Expected title: {text}, actual title: {title}."
+    assert title == text, f"Expected title: {text}, actual title: {title}. "
 
 
-@step('Verify presence of element "{xpath}"')
-def verify_presence_of_element(context, xpath):
-    print(f"Verify element with xpath {xpath} presence")
-    # Increase the wait time to 20 seconds to give elements more time to load
-    elements = WebDriverWait(context.driver, 20).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
-    assert len(elements) >= 1, f"Element with xpath {xpath} not found"
+@step('Verify presents of element "{xpath}"')
+def verify_presents_of_element(context, xpath):
+    print(f"Verify element with xpath {xpath} presents")
+    # elements = context.driver.find_elements(By.XPATH, xpath)
+    elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+    assert len(elements) == 1
 
+@given('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(
+        u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
 
 
 
