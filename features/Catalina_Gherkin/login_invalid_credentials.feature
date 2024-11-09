@@ -2,6 +2,7 @@
 
 Feature: Login Page Tests
   # Examples of login page tests
+    @smoke
 Scenario: Login with incorrect credentials
     Given CK Open "dev" environment
 #    Then Wait 1 seconds

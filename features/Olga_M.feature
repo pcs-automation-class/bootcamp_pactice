@@ -4,6 +4,7 @@ Feature: Login page tests
      Given Open "dev" environment
      Then Verify presents of element "//h5[text()='Login to Your Account']"
 
+    @regression
   Scenario: Login with correct credentials
      Then Type "k38177348@gmail.com" into "//input[@name='username']"
      Then Type "k38ofe" into "//input[@name='password']"
