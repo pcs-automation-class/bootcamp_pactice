@@ -59,12 +59,12 @@ def verify_presents_of_element(context, xpath):
         print("Step is skipped")
 
 
-@step('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    raise NotImplementedError(
-        u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+# @step('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+# def step_impl(context):
+#     """
+#     :type context: behave.runner.Context
+#     """
+#     raise NotImplementedError(
+#         u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
 
 

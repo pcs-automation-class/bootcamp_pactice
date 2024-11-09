@@ -7,7 +7,7 @@ Feature: Login Page Tests with table
       | key      | value                         |
       | username | pcs.automationclass@gmail.com |
       | password | 1234567 |
-#    Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
+    Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
 #    Then Type "1234567" into "//input[@name='password']"
 #    Then Click element "//button[text()=' Login ']"
 #    Then Verify presents of element "//h3[text()=' Your device ']"

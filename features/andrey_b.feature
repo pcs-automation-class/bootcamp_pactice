@@ -4,6 +4,7 @@ Feature: Login Page Tests
     Given Open "dev" environment
 #    Then Verify presents of element "//h5[text()='Login to Your Account']"
 
+  @smoke
   Scenario: Login with correct credentials
     Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
     Then AB Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
