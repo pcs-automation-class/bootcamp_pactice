@@ -62,5 +62,28 @@ echo $VIRTUAL_ENV    # On Linux/macOS
 echo %VIRTUAL_ENV%    # On Windows
 ```
 
+#### Run feature by tags
+```gherkin
+@smoke
+Scenario: Verify the home page title
+    Given I open the URL "https://www.google.com"
+    Then I verify the title of the page is "Google"
+  
+@regression
+Scenario: Verify the home page title
+    Given I open the URL "https://www.google.com"
+    Then I verify the title of the page is "Google"
+
+@smoke @regression
+Scenario: Verify the home page title
+    Given I open the URL "https://www.google.com"
+    Then I verify the title of the page is "Google"
+ ```
+Run the feature file with the tag name
+``` bash
+behave --tags=@smoke  # Run the feature file with the tag name
+behave --tags=@regression --tags=@smoke  # Run the feature file with the tags name
+behave --tags=~@smoke  # Run the feature file without the tag name
+```
 
 
