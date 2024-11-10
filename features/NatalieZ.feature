@@ -14,6 +14,12 @@ Feature: Login Page Tests
     Then Wait 1 seconds
     Then Verify presents of element "//h3[text()=' Your device ']"
 
+ Scenario: Forgot password feature testing
+    Then OK Verify presents of element "//h5[contains(text(), 'Login to Your Account')]"
+    Then OK Wait 1 seconds
+    Then OK Click element "//a[contains(text() = 'Forgot password?')]"
+    Then OK Verify presents of element "//h5[contains(text(), 'Restore Password')]"
+    Then OK Wait 1 seconds
 
   Scenario Outline: Login with incorrect user name
     Then Type "<username>" into "//input[@name='username']"
@@ -35,3 +41,5 @@ Feature: Login Page Tests
     Then Click element "//button[text()=' Login ']"
     Then Wait 1 seconds
     Then Verify presents of element "//p[text()='Invalid username or password']"
+
+
