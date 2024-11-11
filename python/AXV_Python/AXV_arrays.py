@@ -130,10 +130,11 @@ print(students.values())
 print(students["states"]["TX"])
 print(students["Cities"][0])
 
-my_list = ["uhjdgfhjdgfhjdgf"]
+my_list = ["uhjdgfhjdgfhjdgf", "asdgy"]
 my_tuple = (1,)
 
 print(len(my_list))
+print(len(my_tuple))
 
 environments = {
     "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
