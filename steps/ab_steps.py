@@ -1,12 +1,7 @@
-from time import sleep
-
 from behave import step
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 # from selenium.webdriver.common.keys import Keys
 # steps/UI/steps.py
-from steps.UI.steps import type_text
+from steps import type_text
 
 @step('AB Input following credentials')
 def input_following_credentials(context):
