@@ -49,3 +49,7 @@ Feature: Login Page Tests
       | kiwi2024A@mailinator.com   | kiwipass01A |
       | kiwi2024AB+2@mailinator.com | kiwipass02A |
       | kiwi2024C+3@mailinator.com | kiwipass03A |
+
+
+
+

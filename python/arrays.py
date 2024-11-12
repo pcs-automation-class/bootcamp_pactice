@@ -108,3 +108,8 @@ environments = {
     "qa": "https://test:FjeKB9ySMzwvDUs2XACpfu@qa.linkmygear.com",
     "uat": "https://test:FjeKB9ySMzwvDUs2XACpfu@uat.linkmygear.com"
 }
+
+def say_hello(name, age):
+    print(f"Hello {name} and {age}")
+
+say_hello("Andrey", 21)
