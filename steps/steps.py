@@ -2,14 +2,13 @@ from time import sleep
 
 from behave import step
 from selenium.webdriver.common.by import By
-
-
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+# from selenium.webdriver.common.keys import Keys
 
 
 @step('Open "{env}" environment')
 def open_url(context, env):
-    # print(f"Opening url {url}")
     environments = {
         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
         "prod": "https://app.linkmygear.com",
@@ -35,14 +34,9 @@ def click_element(context, xpath):
 
 @step('Type "{text}" into "{xpath}"')
 def type_text(context, text, xpath):
-    if text != "Skip":
-        # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
-        element = context.driver.find_element(By.XPATH, xpath)
-        element.send_keys(text)
-        # element.send_keys(Keys.COMMAND + "a")
-        # element.send_keys(Keys.DELETE)
-
-
+    # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+    element = context.driver.find_element(By.XPATH, xpath)
+    element.send_keys(text)
 
 
 @step('Verify page by title "{text}"')
