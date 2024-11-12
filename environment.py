@@ -16,7 +16,7 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 
 def before_scenario(context, scenario):
-    print("before_scenario")
+    # print("before_scenario")
 
     # context.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     chrome_options = ChromeOptions()
@@ -24,8 +24,8 @@ def before_scenario(context, scenario):
 
     context.driver.maximize_window()
 
-def before_step(context, step):
-    print("before_step", step.name)
+# def before_step(context, step):
+#     print("before_step", step.name)
 
 #
 # def after_step(context, step):
@@ -33,7 +33,7 @@ def before_step(context, step):
 
 
 def after_scenario(context, scenario):
-    print("after_scenario")
+    # print("after_scenario")
     context.driver.quit()
 
 # def after_feature(context, feature):

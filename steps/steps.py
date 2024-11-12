@@ -2,9 +2,9 @@ from time import sleep
 
 from behave import step
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.common.keys import Keys
+
+
+from selenium.webdriver.common.keys import Keys
 
 
 @step('Open "{env}" environment')
@@ -39,6 +39,10 @@ def type_text(context, text, xpath):
         # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
         element = context.driver.find_element(By.XPATH, xpath)
         element.send_keys(text)
+        # element.send_keys(Keys.COMMAND + "a")
+        # element.send_keys(Keys.DELETE)
+
+
 
 
 @step('Verify page by title "{text}"')
@@ -51,9 +55,9 @@ def verify_title(context, text):
 @step('Verify presents of element "{xpath}"')
 def verify_presents_of_element(context, xpath):
     if xpath != "Skip":
-        print(f"Verify element with xpath {xpath} presents")
-        # elements = context.driver.find_elements(By.XPATH, xpath)
-        elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+        # print(f"Verify element with xpath {xpath} presents")
+        elements = context.driver.find_element(By.XPATH, xpath)
+        # elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
         assert len(elements) == 1
     else:
         print("Step is skipped")
@@ -68,3 +72,39 @@ def verify_presents_of_element(context, xpath):
 #         u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
 
 
+@step('Click button "{name}"')
+def click_button(context, name):
+    buttons = {
+        'Login': "//button[text()=' Login ']",
+        'Read more': "//button[text()=' Login ']",
+        'Log out': "//span[text()='Log out']",
+        'Subscribe': "//a[text()='Subscribe']",
+        'Subscribe2': "//a[text()='Subscribe2']",
+    }
+
+    element = context.driver.find_element(By.XPATH, buttons[name])
+    element.click()
+
+
+@step("Go to menu Active Jumps")
+def open_active_jumps_menu(context):
+    pass
+
+@step("Go to menu devices")
+def step_impl(context):
+    pass
+
+
+@step("Go to menu records")
+def step_impl(context):
+    pass
+
+
+@step("Go to menu logbook")
+def step_impl(context):
+    pass
+
+
+@step("Go to menu group jumps")
+def step_impl(context):
+    pass
