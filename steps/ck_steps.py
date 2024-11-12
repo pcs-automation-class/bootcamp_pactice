@@ -33,9 +33,11 @@ def click_element(context, xpath):
 
 @step('CK Type "{text}" into "{xpath}"')
 def type_text(context, text, xpath):
-    # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
-    element = context.driver.find_element(By.XPATH, xpath)
-    element.send_keys(text)
+    if text.lower() == "none":
+        text = ""  # Convert 'none' to an empty string
+    if text != "Skip":
+        element = context.driver.find_element(By.XPATH, xpath)
+        element.send_keys(text)
 
 
 @step('CK Verify page by title "{text}"')
