@@ -70,3 +70,16 @@ def step_impl(context):
     """
     raise NotImplementedError(
         u'STEP: Given the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
+
+@step('CK Click button "{name}"')
+def click_button(context, name):
+    buttons = {
+        'Login': "//button[text()=' Login ']",
+        'Read more': "//button[text()=' Login ']",
+        'Log out': "//span[text()='Log out']",
+        'Subscribe': "//a[text()='Subscribe']",
+        'Subscribe2': "//a[text()='Subscribe2']",
+    }
+
+    element = context.driver.find_element(By.XPATH, buttons[name])
+    element.click()

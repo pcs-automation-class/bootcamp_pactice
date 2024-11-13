@@ -11,7 +11,7 @@ Feature: Login Page Tests
 #    Then Wait 1 seconds
     Then CK Type "strongpassword" into "//input[@name='password']"
 #    Then Wait 1 seconds
-    Then CK Click element "//button[text()=' Login ']"
+    Then CK Click button "Login"
     Then CK Verify presence of element "//h3[text()=' Your device ']"
 
 # username: catk.test@gmail.com
