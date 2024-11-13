@@ -8,7 +8,7 @@ Feature: Login Page Tests
   Scenario Outline: Login with incorrect user name
     Then CK Type "<username>" into "//input[@name='username']"
     Then CK Type "<password>" into "//input[@name='password']"
-    Then CK Click element "//button[text()=' Login ']"
+    Then CK Click button "Login"
     Then CK Verify presence of element "//p[text()='Invalid username or password']"
 
     Examples:
@@ -20,7 +20,7 @@ Feature: Login Page Tests
   Scenario Outline: Login with incorrect password
     Then CK Type "catk.test@gmail.com" into "//input[@name='username']"
     Then CK Type "<password>" into "//input[@name='password']"
-    Then CK Click element "//button[text()=' Login ']"
+    Then CK Click button "Login"
     Then CK Verify presence of element "//p[text()='Invalid username or password']"
 
     Examples:

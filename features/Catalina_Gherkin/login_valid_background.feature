@@ -8,14 +8,14 @@ Feature: Login Page Tests
   Scenario: Login with correct credentials
     Then CK Type "catk.test@gmail.com" into "//input[@name='username']"
     Then CK Type "strongpassword" into "//input[@name='password']"
-    Then CK Click element "//button[text()=' Login ']"
+    Then CK Click button "Login"
     Then CK Verify presence of element "//h3[text()=' Your device ']"
 
 
   Scenario Outline: Login with incorrect user name
     Then CK Type "<username>" into "//input[@name='username']"
     Then CK Type "<password>" into "//input[@name='password']"
-    Then CK Click element "//button[text()=' Login ']"
+    Then CK Click button "Login"
 
     Examples:
       | username                      | password         |

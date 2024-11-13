@@ -12,5 +12,5 @@ Scenario: Login with incorrect credentials
 #    Then Wait 1 seconds
     Then CK Type "hr9r" into "//input[@name='password']"
 #    Then Wait 1 seconds
-    Then CK Click element "//button[text()=' Login ']"
+    Then CK Click button "Login"
     Then CK Verify presence of element "//p[text()='Invalid username or password']"
