@@ -21,7 +21,6 @@ def before_scenario(context, scenario):
     # context.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     chrome_options = ChromeOptions()
     context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
-
     context.driver.maximize_window()
 
 # def before_step(context, step):

@@ -50,7 +50,7 @@ def verify_title(context, text):
 def verify_presents_of_element(context, xpath):
     if xpath != "Skip":
         # print(f"Verify element with xpath {xpath} presents")
-        elements = context.driver.find_element(By.XPATH, xpath)
+        elements = context.driver.find_elements(By.XPATH, xpath)
         # elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
         assert len(elements) == 1
     else:
