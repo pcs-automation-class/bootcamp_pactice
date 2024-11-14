@@ -6,8 +6,8 @@ import json
 
 
 def before_all(context):
-    with open("setup.json", "r") as f:
-        context.credentials = json.load(f)
+    with open("setup.json", "r") as file:
+        context.credentials = json.load(file)
 
 
 #

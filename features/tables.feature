@@ -19,9 +19,9 @@ Feature: Login Page Tests with table
       | key      | value                         |
       | username | pcs.automationclass@gmail.com |
       | password | 1234567                       |
-#    Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
-#    Then Type "1234567" into "//input[@name='password']"
-#    Then Click element "//button[text()=' Login ']"
+    Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
+    Then Type "1234567" into "//input[@name='password']"
+    Then Click element "//button[text()=' Login ']"
     Then Click button "Login"
 #    Then Go to menu logbook
 #    Then Click button "Subscribe"
@@ -33,7 +33,7 @@ Feature: Login Page Tests with table
     Then AB Input following credentials
       | key      | value                         |
       | username | pcs.automationclass@gmail.com |
-      | password | 12345678                       |
+      | password | 12345678                      |
 #    Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
 #    Then Type "1234567" into "//input[@name='password']"
 #    Then Click element "//button[text()=' Login ']"
@@ -42,3 +42,7 @@ Feature: Login Page Tests with table
 #    Then Click button "Subscribe"
 #    Then Go to menu devices
 
+
+  Scenario: Rename device
+    Given Login as "test_1" in "dev" environment
+    Then Wait 5 seconds
