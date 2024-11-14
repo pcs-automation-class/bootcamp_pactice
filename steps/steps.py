@@ -48,22 +48,9 @@ def verify_title(context, text):
 
 @step('Verify presents of element "{xpath}"')
 def verify_presents_of_element(context, xpath):
-    # elements = context.driver.find_elements(By.XPATH, xpath)
-    elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+    elements = context.driver.find_elements(By.XPATH, xpath)
+    #elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
     assert len(elements) == 1
-
-
-# @step('Open "{env}" environment')
-# def open_url(context, env):
-#     environments = {
-#         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
-#         "prod": "https://app.linkmygear.com",
-#         # "qa": "https://test:FjeKB9ySMzwvDUs2XACpfu@qa.linkmygear.com",
-#         # "uat": "https://test:FjeKB9ySMzwvDUs2XACpfu@uat.linkmygear.com"
-#     }
-#     context.driver.get(environments[env])
-#     label_xpath = "//h5[text()='Login to Your Account']"
-#     verify_presents_of_element(context, label_xpath)
 
 
 # @step('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
