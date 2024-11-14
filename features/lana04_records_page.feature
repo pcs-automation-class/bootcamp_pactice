@@ -1,4 +1,4 @@
-Feature: Active Records Tests
+Feature: Records page Tests
   # Examples of login page tests
 
   Scenario: Homepage Header - click Active Jumps menu item

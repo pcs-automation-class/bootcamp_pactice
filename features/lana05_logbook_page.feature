@@ -1,4 +1,4 @@
-Feature: Active Logbook Tests
+Feature: Logbook page Tests
   # Examples of login page tests
 
   Scenario: Homepage Header - click Logbooks menu item
