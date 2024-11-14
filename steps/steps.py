@@ -10,19 +10,19 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 @step('Open "{env}" environment')
 def open_url(context, env):
+    # print(f"Opening url {url}")
     environments = {
         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
         "prod": "https://app.linkmygear.com",
     }
 
     context.driver.get(environments[env])
-    label_xpath = "//h5[text()='Login to Your Account']"
-    verify_presents_of_element(context, label_xpath)
 
 
 @step('Wait {sec} seconds')
 def wait_sec(context, sec):
     sleep(int(sec))
+
 
 
 @step('Click element "{xpath}"')
@@ -56,6 +56,7 @@ def verify_presents_of_element(context, xpath):
         print("Step is skipped")
 
 
+
 @step('Click button "{name}"')
 def ab_click_button(context, name):
     buttons = {
@@ -72,31 +73,32 @@ def ab_click_button(context, name):
     element.click()
 
 
-@step("Go to menu Active Jumps")
-def open_active_jumps_menu(context):
-    pass
+@step("Click menu Active Jumps")
+def open_active_jumps_menu(context, xpath):
+    element = context.driver.find_element(By.XPATH, xpath)
+    element.click()
 
-@step("Go to menu devices")
+@step("Click menu Devices")
 def step_impl(context):
     pass
 
 
-@step("Go to menu records")
+@step("Click menu Records")
 def step_impl(context):
     pass
 
 
-@step("Go to menu logbook")
+@step("Click menu LogBook")
 def step_impl(context):
     pass
 
 
-@step("Go to menu group jumps")
+@step("Click menu Group Jumps")
 def step_impl(context):
     pass
 
 
-@step('Login as "{user}" in "{env}" environment')
+  @step('Login as "{user}" in "{env}" environment')
 def login_in_env_with_user_credentials(context, user, env):
     open_url(context, env)
     username_xpath = "//input[@name='username']"
@@ -115,3 +117,18 @@ def open_list_device_settings(context):
     # xpath = "//a[contains(@href, 'device-settings')]"
     # element =  WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
     # element.click()
+
+    
+# @step('Click menu "{item}"')
+# def click_menu(context, item):
+#     items = {
+#         'Active Jumps': "//a[text()='Active Jumps']",
+#         'Devices': "//a[text()='Devices']",
+#         'Records': "//a[text()='Records']",
+#         'Logbook': "//a[text()='LogBook']",
+#         'Group Jumps': "//a[text()='Group Jumps']",
+#     }
+#
+#     element = context.driver.find_element(By.XPATH, items[item])
+#     element.click()
+
