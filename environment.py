@@ -1,15 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
+import json
 
 
-# def before_all(context):
-#     print("before_all")
-#
+def before_all(context):
+    with open("setup.json", "r") as f:
+        context.credentials = json.load(f)
+
+
 #
 # def before_feature(context, feature):
 #     print("before_feature")
@@ -18,7 +18,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 def before_scenario(context, scenario):
     # print("before_scenario")
 
-    # context.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     chrome_options = ChromeOptions()
     context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
     context.driver.maximize_window()
