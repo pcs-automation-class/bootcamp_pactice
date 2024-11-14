@@ -1,6 +1,7 @@
 from time import sleep
 
 from behave import step
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -27,8 +28,8 @@ def wait_sec(context, sec):
 
 @step('Click element "{xpath}"')
 def click_element(context, xpath):
-    #element = context.driver.find_element(By.XPATH, xpath)
-    element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    element = context.driver.find_element(By.XPATH, xpath)
+    #element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
     element.click()
 
 
@@ -36,6 +37,7 @@ def click_element(context, xpath):
 def type_text(context, text, xpath):
     # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
     element = context.driver.find_element(By.XPATH, xpath)
+    element.clear()
     element.send_keys(text)
 
 
@@ -125,3 +127,9 @@ def step_impl(context):
 #
 #     element = context.driver.find_element(By.XPATH, items[item])
 #     element.click()
+@step("Clear {text} from element {xpath}")
+def clear_element(context, text, xpath):
+    element = context.driver.find_element(By.XPATH, xpath)
+    element.click()
+    element.sendKeys(Keys.BACK_SPACE)
+    #element.clear()
