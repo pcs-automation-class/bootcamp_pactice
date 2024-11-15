@@ -15,3 +15,15 @@ def input_following_credentials(context):
 # @step('AB Type "{text}" into "{xpath}"')
 # def type_text(context, text, xpath):
 #     print("This is my step")
+
+@step('AB Open "{env}" environment')
+def open_url(context, env):
+    environments = {
+        "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
+        "prod": "https://app.linkmygear.com",
+        # "qa": "https://test:FjeKB9ySMzwvDUs2XACpfu@qa.linkmygear.com",
+        # "uat": "https://test:FjeKB9ySMzwvDUs2XACpfu@uat.linkmygear.com"
+    }
+    context.driver.get(environments[env])
+    label_xpath = "//h5[text()='Login to Your Account']"
+    verify_presents_of_element(context, label_xpath)
