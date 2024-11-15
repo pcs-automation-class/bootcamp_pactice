@@ -131,5 +131,21 @@ def step_impl(context):
 def clear_element(context, text, xpath):
     element = context.driver.find_element(By.XPATH, xpath)
     element.click()
-    element.sendKeys(Keys.BACK_SPACE)
+    element.send_keys(Keys.BACK_SPACE)
+    #element.send_keys(Keys.CONTROL, 'a')
+    #with element.send_keys(Keys.BACKSPACE) or element.send_keys(Keys.DELETE)
+    #driver.execute_script('arguments[0].value = '', driver.find_element_by_id("text-input-where"))
     #element.clear()
+
+@step('Clear element "{xpath}"')
+def clear_element(context, xpath):
+    element = context.driver.find_element(By.XPATH, xpath)
+    element.click()
+    #element.clear()
+    #to highlight the text in the text field
+    element.send_keys(Keys.COMMAND+"a")
+    element.send_keys(Keys.DELETE)
+
+
+
+

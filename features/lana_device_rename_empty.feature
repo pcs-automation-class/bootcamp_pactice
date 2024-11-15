@@ -20,7 +20,11 @@ Feature: Devices List Tests
     Then Wait 2 seconds
     Then click element "//div[contains(@class, 'label-top')]"
     #Then click element "//h3[(@class, 'modal-title')]"
-    Then Clear "kiwis device1 here" from element "//div[contains(@class, 'el-form-item__content')]"
+    Then Clear element "//input[contains(@class, 'el-input__inner')]"
+    Then Wait 2 seconds
+    #Then click element "//h3[@class='modal-title']"
+    Then Wait 2 seconds
+    Then click element "//div[contains(@class, 'label-top')]"
     Then Wait 2 seconds
     Then Click element "//span[text()='Update']"
-    Then Wait 2 seconds
+    Then Wait 4 seconds
