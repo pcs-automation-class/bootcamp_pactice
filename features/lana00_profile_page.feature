@@ -15,4 +15,4 @@ Feature: Profile Page Tests
     #Then click element "//a[class='active router-link-exact-active profile-btn hidden-on-tablet']"
     #Then click element "//div[1]/div[1]/div[2]/a[1]']"
     Then click element "//a[@class='profile-btn hidden-on-tablet']"
-     Then Wait 2 seconds
+    Then Wait 2 seconds
