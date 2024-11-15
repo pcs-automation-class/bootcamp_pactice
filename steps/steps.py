@@ -25,21 +25,6 @@ def wait_sec(context, sec):
     sleep(int(sec))
 
 
-
-@step('Click element "{xpath}"')
-def click_element(context, xpath):
-    # element = context.driver.find_element(By.XPATH, xpath)
-    element =  WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
-    element.click()
-
-
-@step('Type "{text}" into "{xpath}"')
-def type_text(context, text, xpath):
-    element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
-    # element = context.driver.find_element(By.XPATH, xpath)
-    element.send_keys(text)
-
-
 @step('Verify page by title "{text}"')
 def verify_title(context, text):
     sleep(1)
@@ -130,8 +115,6 @@ def open_list_device_settings(context):
 #         'Group Jumps': "//a[text()='Group Jumps']",
 #     }
 #
-#     element = context.driver.find_element(By.XPATH, items[item])
-#     element.click()
 
 @step('Clear input field "{xpath}"')
 def clear_field(context, xpath):

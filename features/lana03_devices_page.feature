@@ -13,4 +13,4 @@ Feature: Devices Page Tests
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//h3[text()=' Your device ']"
     Then click element "//a[text()='Devices']"
-    Then Wait 2 seconds
+    Then Wait 6 seconds
