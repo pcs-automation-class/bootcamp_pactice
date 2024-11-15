@@ -18,7 +18,7 @@ Feature: Devices List Tests
     Then Wait 2 seconds
     Then click element "//div[contains(@class, 'label-top')]"
     Then Wait 2 seconds
-    Then Type "kiwis device Changed 1 here" into "//input[contains(@class, 'el-input__inner')]"
+    Then Type "kiwis device1 here" into "//input[contains(@class, 'el-input__inner')]"
     Then Wait 2 seconds
     Then Click element "//span[text()='Update']"
     Then Wait 2 seconds
