@@ -2,6 +2,7 @@ from time import sleep
 from xml.etree.ElementPath import xpath_tokenizer
 
 from behave import step
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -98,7 +99,7 @@ def step_impl(context):
     pass
 
 
-  @step('Login as "{user}" in "{env}" environment')
+@step('Login as "{user}" in "{env}" environment')
 def login_in_env_with_user_credentials(context, user, env):
     open_url(context, env)
     username_xpath = "//input[@name='username']"
@@ -132,3 +133,9 @@ def open_list_device_settings(context):
 #     element = context.driver.find_element(By.XPATH, items[item])
 #     element.click()
 
+@step('Clear input field "{xpath}"')
+def clear_field(context, xpath):
+    element =  WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    element.click()
+    element.send_keys(Keys.COMMAND + "a")
+    element.send_keys(Keys.DELETE)
