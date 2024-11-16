@@ -5,3 +5,5 @@ __pycache__
 *.pyc
 setup.json
 reports
+report
+log
