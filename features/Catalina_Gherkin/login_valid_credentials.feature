@@ -3,16 +3,16 @@ Feature: Login Page Tests
   # Examples of login page tests
 
   Scenario: Login with correct credentials
-    Given CK Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"
+    Given CK Open "dev" environment
 #    Then Wait 1 seconds
-    Then Verify presents of element "//h5[text()='Login to Your Account']"
+    Then CK Verify presence of element "//h5[text()='Login to Your Account']"
 #    Then Wait 1 seconds
-    Then Type "catk.test@gmail.com" into "//input[@name='username']"
+    Then CK Type "catk.test@gmail.com" into "//input[@name='username']"
 #    Then Wait 1 seconds
-    Then Type "strongpassword" into "//input[@name='password']"
+    Then CK Type "strongpassword" into "//input[@name='password']"
 #    Then Wait 1 seconds
-    Then Click element "//button[text()=' Login ']"
-    Then Verify presents of element "//h3[text()=' Your device ']"
+    Then CK Click button "Login"
+    Then CK Verify presence of element "//h3[text()=' Your device ']"
 
 # username: catk.test@gmail.com
 # password: strongpassword
