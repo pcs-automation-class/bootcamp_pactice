@@ -1,17 +1,14 @@
 from time import sleep
-from xml.etree.ElementPath import xpath_tokenizer
 
 from behave import step
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.common.keys import Keys
 
 
 @step('Open "{env}" environment')
 def open_url(context, env):
-    # print(f"Opening url {url}")
     environments = {
         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
         "prod": "https://app.linkmygear.com",
@@ -24,6 +21,17 @@ def open_url(context, env):
 def wait_sec(context, sec):
     sleep(int(sec))
 
+@step('Click element "{xpath}"')
+def click_element(context, xpath):
+    element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    element.click()
+
+
+@step('Type "{text}" into "{xpath}"')
+def type_text(context, text, xpath):
+    if text != "Skip":
+        element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        element.send_keys(text)
 
 @step('Verify page by title "{text}"')
 def verify_title(context, text):
@@ -100,17 +108,23 @@ def login_in_env_with_user_credentials(context, user, env):
 @step("Open window Device Settings")
 def open_list_device_settings(context):
     click_element(context, "//a[contains(@href, 'device-settings')]")
-    # xpath = "//a[contains(@href, 'device-settings')]"
-    # element =  WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
-    # element.click()
 
-    
-# @step('Click menu "{item}"')
-# def click_menu(context, item):
-#     items = {
-#         'Active Jumps': "//a[text()='Active Jumps']",
-#         'Devices': "//a[text()='Devices']",
-#         'Records': "//a[text()='Records']",
-#         'Logbook': "//a[text()='LogBook']",
-#         'Group Jumps': "//a[text()='Group Jumps']",
-#     }
+
+@step('Click menu "{item}"')
+def click_menu(context, item):
+    items = {
+        'Active Jumps': "//a[text()='Active Jumps']",
+        'Devices': "//a[text()='Devices']",
+        'Records': "//a[text()='Records']",
+        'Logbook': "//a[text()='LogBook']",
+        'Group Jumps': "//a[text()='Group Jumps']",
+    }
+    click_element(context, items[item])
+
+
+@step('Clear input field "{xpath}"')
+def clear_field(context, xpath):
+    element =  WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    element.click()
+    element.send_keys(Keys.COMMAND + "a")
+    element.send_keys(Keys.DELETE)

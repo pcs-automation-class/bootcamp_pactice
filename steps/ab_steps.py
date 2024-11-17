@@ -1,6 +1,6 @@
 from behave import step
 # from selenium.webdriver.common.keys import Keys
-# steps/UI/steps.py
+
 from steps import type_text
 
 @step('AB Input following credentials')
