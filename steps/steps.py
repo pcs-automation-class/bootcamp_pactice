@@ -84,7 +84,7 @@ def step_impl(context):
     pass
 
 
-  @step('Login as "{user}" in "{env}" environment')
+@step('Login as "{user}" in "{env}" environment')
 def login_in_env_with_user_credentials(context, user, env):
     open_url(context, env)
     username_xpath = "//input[@name='username']"
@@ -114,5 +114,3 @@ def open_list_device_settings(context):
 #         'Logbook': "//a[text()='LogBook']",
 #         'Group Jumps': "//a[text()='Group Jumps']",
 #     }
-#
-
