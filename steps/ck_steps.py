@@ -93,8 +93,8 @@ def ck_click_button(context, name):
         'Show on map': "//button[text()='Show on map']",
         'Edit': "//div[@class='btns']/button[contains(text(), 'Edit')]",
         'Delete': "//div[@class='btns']/button[contains(text(), 'Delete')]",
-        'Add New Device': "//span[text()='Add new device']/parent::button"
-        'Update': 
+        'Add New Device': "//span[text()='Add new device']/parent::button",
+        'Update': "//span[text()='Update']/parent::button"
     }
 
     if name not in buttons:
