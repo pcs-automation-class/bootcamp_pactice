@@ -28,7 +28,7 @@
 #
 # print("Done.")
 
-answer = input("Choose: \n1 convert miles to km. \n2 convert km to miles. \nYour choice: ")
+   answer = input("Choose: \n1 convert miles to km. \n2 convert km to miles. \nYour choice: ")
 
 if answer == "2":
     km = float(input("Enter km: "))
