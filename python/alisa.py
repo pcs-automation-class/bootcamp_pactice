@@ -40,3 +40,4 @@ elif answer == "1":
     print(f"{km} km")
 else:
     print("Wrong input.")
+
