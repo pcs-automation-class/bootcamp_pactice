@@ -11,7 +11,7 @@ Feature: Login Page Tests
     Then OK Wait 1 seconds
     Then OK Type "mCtwAtjpizSTWEz7" into "//input[@type = 'password']"
     Then OK Wait 1 seconds
-    Then OK Click element "//button[@type = 'submit']"
+    Then OK Click button "Login"
     Then OK Verify presents of element "//h3[text()=' Your device ']"
 
   Scenario: Forgot password feature
@@ -20,13 +20,13 @@ Feature: Login Page Tests
     Then OK Click element "//a[text() = 'Forgot password?']"
     Then OK Verify presents of element "//h5[contains(text(), 'Restore Password')]"
     Then OK Type "houseattheocean@gmail.com" into "//input[@class = 'el-input__inner']"
-    Then OK Click element "//button[text() = ' Send ']"
+    Then OK Click button "Send"
     Then OK Verify presents of element "//h5[text()='Please check your inbox. You will receive an email with instruction in case if such email exists in our DB ']"
 
   Scenario Outline: Login with empty credentials
     Then OK Type "<username>" into "//input[@type = 'text']"
     Then OK Type "<password>" into "//input[@type = 'password']"
-    Then OK Click element "//button[@type = 'submit']"
+    Then OK Click button "Login"
     Then OK Verify presents of element "<xpath_username>"
     Then OK Verify presents of element "<xpath_password>"
     Examples:
@@ -38,7 +38,7 @@ Feature: Login Page Tests
   Scenario Outline: Login with incorrect credentials
     Then OK Type "<username>" into "//input[@type = 'text']"
     Then OK Type "<password>" into "//input[@type = 'password']"
-    Then OK Click element "//button[@type = 'submit']"
+    Then OK Click button "Login"
     Then OK Verify presents of element "//p[text()='Invalid username or password']"
     Examples:
       | username                   | password         |
@@ -53,17 +53,17 @@ Feature: Login Page Tests
     Then OK Wait 1 seconds
     Then OK Type "mCtwAtjpizSTWEz7" into "//input[@type = 'password']"
     Then OK Wait 1 seconds
-    Then OK Click element "//button[@type = 'submit']"
+    Then OK Click button "Login"
     Then OK Wait 1 seconds
     Then OK Verify presents of element "//h3[text()=' Your device ']"
     Then OK Wait 2 seconds
-    Then OK Click element "//a[@href='#/device-settings']/i"
+    Then OK Click button "Device settings"
     Then OK Wait 2 seconds
-    Then OK Click element "(//button[text() = ' Edit '])[1]"
+    Then OK Click button "Device1"
     Then OK Wait 2 seconds
     Then OK Clear the field "//input[@class='el-input__inner']"
     Then OK Wait 1 seconds
     Then OK Type "New device2" into "//input[@class='el-input__inner']"
     Then OK Wait 1 seconds
-    Then OK Click element "//button/span[text()='Update']"
+    Then OK Click button "Update"
 
