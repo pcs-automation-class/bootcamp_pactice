@@ -33,6 +33,7 @@ def type_text(context, text, xpath):
         element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
         element.send_keys(text)
 
+
 @step('Verify page by title "{text}"')
 def verify_title(context, text):
     sleep(1)
@@ -48,6 +49,7 @@ def verify_presents_of_element(context, xpath):
         assert len(elements) == 1, f"Expected 1 element, actual {len(elements)} elements"
     else:
         print("Step is skipped")
+        
 
 
 
