@@ -10,7 +10,7 @@ Feature: Test devices
     Then CK Rename "Name" to "<new_name>"
     Then Click button "Update"
     Then CK Verify pop-up message for "<new_name>"
-    Then CK Verify presence of element "Name"
+    Then CK Verify updated device name presence "<new_name>"
     Then CK Verify device name is updated to "<new_name>"
     Examples:
       | new_name                             |

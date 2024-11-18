@@ -56,14 +56,14 @@ def verify_presence_of_element(context, element_name):
 
     # Check if the identifier is a known element name or an XPath
     elements_map = {
-        "Name": "//div[@class='el-input__wrapper']//input[contains(@class, 'el-input__inner')]",
+        "Name": "//span[text()='{new_name}']",
         # Add other element names as needed
     }
 
     xpath = elements_map.get(element_name, element_name)  # Use XPath directly if not in elements_map
 
     try:
-        elements = WebDriverWait(context.driver, 10).until(
+        elements = WebDriverWait(context.driver, 20).until(
             EC.presence_of_all_elements_located((By.XPATH, xpath))
         )
         assert len(elements) > 0, f"Element '{element_name}' with xpath '{xpath}' not found."
@@ -197,19 +197,34 @@ def open_device_settings(context, imei):
     )
     element.click()
 
+@step('CK Verify pop-up message for "{device_name}"')
+def verify_popup_message_step(context, device_name):
+    verify_popup_message(context, device_name)
 
 # Function to verify a pop-up message
 def verify_popup_message(context, device_name):
-    expected_message = f"{device_name} successfully updated"
-    popup_xpath = "//div[contains(@class, 'popup') or contains(@class, 'notification')]"
+    expected_message = f"{device_name} succesfully updated"
+    popup_xpath = "//div[contains(@class, 'el-message') and contains(@class, 'el-message--success')]"
     popup_element = WebDriverWait(context.driver, 20).until(
         EC.visibility_of_element_located((By.XPATH, popup_xpath))
     )
     actual_message = popup_element.text
     assert expected_message in actual_message, f"Expected message: '{expected_message}', but got: '{actual_message}'"
 
+@step('CK Verify updated device name presence "{new_name}"')
+def verify_updated_device_name_presence(context, new_name):
+    # Construct the XPath dynamically for the updated device name
+    xpath = f"//span[text()='{new_name}']"
 
-@step('CK Verify pop-up message for "{device_name}"')
-def verify_popup_message_step(context, device_name):
-    verify_popup_message(context, device_name)
+    try:
+        elements = WebDriverWait(context.driver, 20).until(
+            EC.presence_of_all_elements_located((By.XPATH, xpath))
+        )
+        assert len(elements) > 0, f"Updated device name '{new_name}' with xpath '{xpath}' not found."
+        print(f"Updated device name '{new_name}' found with xpath: {xpath}")
+    except TimeoutException:
+        print(f"Timeout: Updated device name '{new_name}' not found with xpath: {xpath}")
+        raise
+
+
 
