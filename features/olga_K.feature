@@ -45,3 +45,25 @@ Feature: Login Page Tests
       | houseattheocean@gmail.com  | 123321           |
       | None                       | 1234567          |
       | pcs2@gmail.com             | hr9rsHU6TnWDYnpy |
+
+  Scenario: Rename device
+    Then OK Verify presents of element "//h5[contains(text(), 'Login to Your Account')]"
+    Then OK Wait 1 seconds
+    Then OK Type "houseattheocean@gmail.com" into "//input[@type = 'text']"
+    Then OK Wait 1 seconds
+    Then OK Type "mCtwAtjpizSTWEz7" into "//input[@type = 'password']"
+    Then OK Wait 1 seconds
+    Then OK Click element "//button[@type = 'submit']"
+    Then OK Wait 1 seconds
+    Then OK Verify presents of element "//h3[text()=' Your device ']"
+    Then OK Wait 2 seconds
+    Then OK Click element "//a[@href='#/device-settings']/i"
+    Then OK Wait 2 seconds
+    Then OK Click element "(//button[text() = ' Edit '])[1]"
+    Then OK Wait 2 seconds
+    Then OK Clear the field "//input[@class='el-input__inner']"
+    Then OK Wait 1 seconds
+    Then OK Type "New device2" into "//input[@class='el-input__inner']"
+    Then OK Wait 1 seconds
+    Then OK Click element "//button/span[text()='Update']"
+
