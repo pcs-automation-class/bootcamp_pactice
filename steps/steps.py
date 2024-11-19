@@ -130,3 +130,4 @@ def clear_field(context, xpath):
     element.click()
     element.send_keys(Keys.COMMAND + "a")
     element.send_keys(Keys.DELETE)
+
