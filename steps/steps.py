@@ -80,17 +80,17 @@ def step_impl(context):
 
 
 @step("Click menu Records")
-def step_impl(context):
+def step_impl_1(context):
     pass
 
 
 @step("Click menu LogBook")
-def step_impl(context):
+def step_impl_2(context):
     pass
 
 
 @step("Click menu Group Jumps")
-def step_impl(context):
+def step_impl_3(context):
     pass
 
 
@@ -130,4 +130,3 @@ def clear_field(context, xpath):
     element.click()
     element.send_keys(Keys.COMMAND + "a")
     element.send_keys(Keys.DELETE)
-
