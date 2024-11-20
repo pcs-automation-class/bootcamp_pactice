@@ -60,7 +60,9 @@ def ab_click_button(context, name):
         'Log out': "//span[text()='Log out']",
         'Subscribe': "//a[text()='Subscribe']",
         'Update': "//button/span[text()='Update']",
-
+        'Settings': "//a[contains(@class, 'profile-btn')]",
+        'Billing': "//button[text()='Billing']",
+        'Customer Portal': "//button[text()='Customer Portal']"
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
