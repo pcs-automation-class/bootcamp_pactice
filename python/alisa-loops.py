@@ -1,5 +1,5 @@
 # import math
-from math import sqrt
+# from math import sqrt
 
 # for
 
@@ -70,7 +70,7 @@ from math import sqrt
 # Repeat
 # Yourself
 
-#=====================
+# =====================
 # functions
 # def print_result(number):
 #     print("Result: " + str(number))
@@ -139,6 +139,3 @@ from math import sqrt
 #     if j == 4:
 #         continue
 #     print(j)
-
-
-
