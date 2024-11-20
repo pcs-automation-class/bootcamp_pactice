@@ -1,11 +1,12 @@
 from time import sleep
-
+import requests
 from behave import step
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
+BASE_URL = 'https://dev.linkmygear.com/'
 
 @step('OK Open "{env}" environment')
 def ok_open_url(context, env):
@@ -80,4 +81,63 @@ def ok_click_button(context, name):
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
     # element = context.driver.find_element(By.XPATH, buttons[name])
     element.click()
+
+
+@step('OK Create new record for device with following data') #API
+def ok_add_new_device(context):
+    endpoint = 'device-data/airguard/log/v1'
+    data = {}
+    for row in context.table.rows:
+        data[row.cells[0]] = row.cells[1]
+
+    message = (
+        f"{data['imei']},{data['date']}191400.000,{data['jump']},3249.34,676.98,32.22,-115,1,1,{data['date']}211429.000,"
+        f"{data['latitude']},{data['longitude']},2573.600,,,1,,2.5,,,,20,4,,,28,,,|,771,-115,1723324527")
+
+    response = requests.post(BASE_URL + endpoint, data=message)
+    assert response.status_code == 201, f"{response.status_code}: {response.text}"
+
+
+@step('OK Create new heartbeat message for device with following data') #API
+def ok_add_new_device(context):
+    endpoint = 'device-data/airguard/heartbeat/v1'
+    data = {}
+    for row in context.table.rows:
+        data[row.cells[0]] = row.cells[1]
+
+    if data['state'] == "on":
+        state = 1
+    elif data['state'] == "off":
+        state = 2
+    else:
+        state = 0
+    message = (f"{data['imei']},4.05,12.0,39.11,-66,ATT, {data['date']}190424.000,"
+               f"{data['latitude']},{data['longitude']},9,{data['date']}190421.000,{data['battery']},{state},,,|,123;")
+    response = requests.post(BASE_URL + endpoint, data=message)
+    assert response.status_code == 201, f"{response.status_code}: {response.text}"
+
+
+@step("OK Click menu Active Jumps")
+def ok_open_active_jumps_menu(context, xpath):
+    element = context.driver.find_element(By.XPATH, xpath)
+    element.click()
+
+@step("OK Click menu Devices")
+def ok_step_impl(context):
+    pass
+
+
+@step("OK Click menu Records")
+def ok_step_impl1(context):
+    pass
+
+
+@step("OK Click menu LogBook")
+def ok_step_impl2(context):
+    pass
+
+
+@step("OK Click menu Group Jumps")
+def step_impl3(context):
+    pass
 
