@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 BASE_URL = 'https://dev.linkmygear.com/'
 
+
 @step('OK Open "{env}" environment')
 def ok_open_url(context, env):
     # print(f"Opening url {url}")
@@ -99,7 +100,7 @@ def ok_add_new_device(context):
 
 
 @step('OK Create new heartbeat message for device with following data') #API
-def ok_add_new_device(context):
+def ok_add_new_device1(context):
     endpoint = 'device-data/airguard/heartbeat/v1'
     data = {}
     for row in context.table.rows:
@@ -122,6 +123,7 @@ def ok_open_active_jumps_menu(context, xpath):
     element = context.driver.find_element(By.XPATH, xpath)
     element.click()
 
+
 @step("OK Click menu Devices")
 def ok_step_impl(context):
     pass
@@ -140,4 +142,3 @@ def ok_step_impl2(context):
 @step("OK Click menu Group Jumps")
 def step_impl3(context):
     pass
-
