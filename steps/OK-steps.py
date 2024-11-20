@@ -4,7 +4,7 @@ from behave import step
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys
 
 
 @step('OK Open "{env}" environment')
@@ -57,6 +57,14 @@ def verify_presents_of_element(context, xpath):
         assert len(elements) == 1
     else:
         print("Step is skipped")
+
+@step('OK Clear the field "{xpath}"')
+def clear_input_field(context, xpath):
+    input_field = context.driver.find_element(By.XPATH, xpath)
+    input_field.click()
+    input_field.send_keys(Keys.CONTROL, 'a')
+    input_field.send_keys(Keys.DELETE)
+
 
 
 # @step('the login page is open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com"')
