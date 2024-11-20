@@ -9,6 +9,7 @@ import json
 
 browser = "Chrome"
 
+
 def before_all(context):
     with open("setup.json", "r") as file:
         context.credentials = json.load(file)
@@ -18,10 +19,12 @@ def before_scenario(context, scenario):
     if "EMULATE" not in scenario.name:
         if browser == "Chrome":
             chrome_options = ChromeOptions()
-            context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+            context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),
+                                              options=chrome_options)
         elif browser == "Firefox":
             firefox_options = FirefoxOptions()
-            context.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+            context.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()),
+                                               options=firefox_options)
         else:
             assert False, "Unknown browser!"
 
