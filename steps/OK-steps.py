@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 @step('OK Open "{env}" environment')
-def open_url(context, env):
+def ok_open_url(context, env):
     # print(f"Opening url {url}")
     environments = {
         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
@@ -16,23 +16,23 @@ def open_url(context, env):
     }
     context.driver.get(environments[env])
     label_xpath = "//h5[text()='Login to Your Account']"
-    verify_presents_of_element(context, label_xpath)
+    ok_verify_presents_of_element(context, label_xpath)
 
 
 @step('OK Wait {sec} seconds')
-def wait_sec(context, sec):
+def ok_wait_sec(context, sec):
     sleep(int(sec))
 
 
 @step('OK Click element "{xpath}"')
-def click_element(context, xpath):
+def ok_click_element(context, xpath):
     element = context.driver.find_element(By.XPATH, xpath)
     # element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
     element.click()
 
 
 @step('OK Type "{text}" into "{xpath}"')
-def type_text(context, text, xpath):
+def ok_type_text(context, text, xpath):
     if text != "Skip":
         # element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
         element = context.driver.find_element(By.XPATH, xpath)
@@ -40,14 +40,14 @@ def type_text(context, text, xpath):
 
 
 @step('OK Verify page by title "{text}"')
-def verify_title(context, text):
+def ok_verify_title(context, text):
     sleep(1)
     title = context.driver.title
     assert title == text, f"Expected title: {text}, actual title: {title}. "
 
 
 @step('OK Verify presents of element "{xpath}"')
-def verify_presents_of_element(context, xpath):
+def ok_verify_presents_of_element(context, xpath):
     if xpath != "Skip":
         print(f"Verify element with xpath {xpath} presents")
         # elements = context.driver.find_elements(By.XPATH, xpath)
@@ -56,15 +56,17 @@ def verify_presents_of_element(context, xpath):
     else:
         print("Step is skipped")
 
+
 @step('OK Clear the field "{xpath}"')
-def clear_input_field(context, xpath):
+def ok_clear_input_field(context, xpath):
     input_field = context.driver.find_element(By.XPATH, xpath)
     input_field.click()
     input_field.send_keys(Keys.CONTROL, 'a')
     input_field.send_keys(Keys.DELETE)
 
+
 @step('OK Click button "{name}"')
-def click_button(context, name):
+def ok_click_button(context, name):
     buttons = {
         'Login': "//button[text()=' Login ']",
         'Read more': "//button[text()=' Login ']",
