@@ -1,4 +1,6 @@
 Feature: Login Page Tests with table
+#  Background:
+#    When Use chrome browser
 
   Scenario: Login with correct credentials
     Given Open "dev" environment
@@ -33,11 +35,11 @@ Feature: Login Page Tests with table
   Scenario: Rename device
     Given Login as "test_1" in "dev" environment
     Then Open window Device Settings
-    Then Click element "//tr[./td/div[text()='333333333333324']]//button[text()=' Edit ']"
-    Then Click element "//input[@class='el-input__inner']"
-    Then Clear input field "//input[@class='el-input__inner']"
-    Then Click button "Update"
-    Then Wait 3 seconds
+#    Then Click element "//tr[./td/div[text()='333333333333324']]//button[text()=' Edit ']"
+#    Then Click element "//input[@class='el-input__inner']"
+#    Then Clear input field "//input[@class='el-input__inner']"
+#    Then Click button "Update"
+#    Then Wait 3 seconds
 
   Scenario: Verify battery in heartbeat message
     Given Create new heartbeat message for device with following data

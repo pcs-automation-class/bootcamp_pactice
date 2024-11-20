@@ -13,7 +13,8 @@ def add_new_device(context):
         data[row.cells[0]] = row.cells[1]
 
     message = (
-        f"{data['imei']},{data['date']}191400.000,{data['jump']},3249.34,676.98,32.22,-115,1,1,{data['date']}211429.000,"
+        f"{data['imei']},{data['date']}191400.000,{data['jump']},3249.34,676.98,32.22,-115,1,1,"
+        f"{data['date']}211429.000,"
         f"{data['latitude']},{data['longitude']},2573.600,,,1,,2.5,,,,20,4,,,28,,,|,771,-115,1723324527")
 
     response = requests.post(BASE_URL + endpoint, data=message)
@@ -21,7 +22,7 @@ def add_new_device(context):
 
 
 @step('Create new heartbeat message for device with following data')
-def add_new_device(context):
+def add_new_device_heartbeat_msg(context):
     endpoint = 'device-data/airguard/heartbeat/v1'
     data = {}
     for row in context.table.rows:

@@ -1,5 +1,5 @@
 # import math
-from math import sqrt
+# from math import sqrt
 
 # for
 
@@ -70,7 +70,7 @@ from math import sqrt
 # Repeat
 # Yourself
 
-#=====================
+# =====================
 # functions
 # def print_result(number):
 #     print("Result: " + str(number))
@@ -97,26 +97,45 @@ from math import sqrt
 # result = one / two
 # print_result(result)
 
-def calculation(num_1, num_2, sign):
-    if sign == '+':
-        return num_1 + num_2
-    elif sign == '-':
-        return num_1 - num_2
-    elif sign == '*':
-        return num_1 * num_2
-    elif sign == '/':
-        return num_1 / num_2
-    elif sign == '^':
-        return sqrt(num_1)
+# def calculation(num_1, num_2, sign):
+#     if sign == '+':
+#         return num_1 + num_2
+#     elif sign == '-':
+#         return num_1 - num_2
+#     elif sign == '*':
+#         return num_1 * num_2
+#     elif sign == '/':
+#         return num_1 / num_2
+#     elif sign == '^':
+#         return sqrt(num_1)
+#
+#
+# while True:
+#     answer_1 = int(input("Enter first number: "))
+#     answer_2 = int(input("Enter second number: "))
+#     answer_3 = input("Enter sign +, -, / , *): ")
+#
+#     result = calculation(answer_1, answer_2, answer_3)
+#     print(result)
+#
+#     if input("Would you like to continue? [Y/N]: ").upper() != 'Y':
+#         break
 
+# h = 0
+#
+# while h < 15:
+#     h += 1
+#     if h == 13:
+#         # continue
+#         break
+#     print(h)
 
-while True:
-    answer_1 = int(input("Enter first number: "))
-    answer_2 = int(input("Enter second number: "))
-    answer_3 = input("Enter sign +, -, / , *): ")
+# for j in range(15):
+#     if j == 4:
+#         break
+#     print(j)
 
-    result = calculation(answer_1, answer_2, answer_3)
-    print(result)
-
-    if input("Would you like to continue? [Y/N]: ").upper() != 'Y':
-        break
+# for j in range(15):
+#     if j == 4:
+#         continue
+#     print(j)
