@@ -20,6 +20,6 @@ Feature: Test API
       | longitude | -121.641856     |
       | battery   | 10              |
 #      states: idle, on, off
-      | state     | off              |
+      | state     | off             |
 
     

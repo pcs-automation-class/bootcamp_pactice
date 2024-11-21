@@ -2,7 +2,7 @@ Feature: Login Page Tests
   Background:
     Given OK Open "dev" environment
     Then OK Wait 2 seconds
-  # Examples of login page tests
+  # Examples of  login page tests
 
   Scenario: Login with correct credentials
     Then OK Verify presents of element "//h5[contains(text(), 'Login to Your Account')]"
