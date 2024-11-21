@@ -6,6 +6,9 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import json
+from pom.LoginPage import LoginPage
+from pom.ABLoginPage import ABLoginPage
+
 
 browser = "Chrome"
 
@@ -29,6 +32,8 @@ def before_scenario(context, scenario):
             assert False, "Unknown browser!"
 
         context.driver.maximize_window()
+        context.login_page = LoginPage(context.driver)
+        context.ab_login_page = ABLoginPage(context.driver)
 
 
 def after_scenario(context, scenario):
