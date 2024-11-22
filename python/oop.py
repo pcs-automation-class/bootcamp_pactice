@@ -1,5 +1,10 @@
+from calendar import firstweekday
+
+from pipenv.patched.safety.models import announcement_nmt
+
+
 class Animals:
-    name = "Animal"
+    name = ""
     age = 0
     tail = True
 
@@ -13,87 +18,43 @@ class Animals:
         age = 0
         self.age = age
 
-cat = Animals()
-dog = Animals()
-mice = Animals()
 
-cat.print_name()
-dog.print_name()
-mice.print_name()
+class Cat(Animals):
+    def __init__(self):
+        self.can_meow = True
+        self.name = "Kuzya"
 
-cat.name = "Barsik"
-dog.name = "Rex"
-mice.name = "Mickey"
 
-cat.print_name()
-dog.print_name()
-mice.print_name()
+class WhiteCat(Cat):
+    def __init__(self, color: str = "White"):
+        # super().__init__()
+        self.color = color
+        self.name = "Cat"
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-# class Cat(Animals):
-#     can_meow = True
-#
-#
-#
-# class Dog(Animals):
-#     can_bark = True
-#     self.name = "Dog"
-#
-#
-#
-# class LoginPage:
-#     def __init__(self):
-#         self.username = "//input[@name='name']"
-#         self.password = "//input[@name='password']"
-#
-#     def type_in_field(self, field, text):
-#         pass
-#
-#
-# if __name__ == "__main__":
-#     animal = Animals()
-#     animal2 = Animals()
-#     cat = Cat()
-#     dog = Dog()
-#
-#     cat.set_name()
-#
-#
-#     animal.print_name()
-#     animal2.print_name()
-#
-#     animal.set_name("Dog")
-#     animal2.set_name("Cat")
-#
-#     animal.print_name()
-#     animal2.print_name()
-#
-#     pets = list()
-#
-#     pets.append(animal)
-#     pets.append(animal2)
-#
-#     print(pets)
-#
-#     pets[0].print_name()
-#     pets[1].print_name()
-#
-#     login_page = LoginPage()
-#     login_page.type_in_field(login_page.username, "admin")
-#
-#
-#     x = 0
-#
-#     def my_function():
-#         y = x
-#
-#     x = y
+    def get_color(self) -> str:
+        return self.color
+
+    def print_name(self):
+        print(f"Name: {self.name}")
+
+# my_cat = WhiteCat()
+# cat = WhiteCat()
+# my_cat.print_name()
+# cat.set_name("Cat")
+# cat.print_name()
+
+first = 1
+second = "w"
+result = 0
+
+try:
+    result = first / second
+except ZeroDivisionError:
+    print("Do not divide to zero!")
+except TypeError:
+    print("Wrong value")
+# except Exception as e:
+#     print(e)
+
+
+print(result)
