@@ -1,19 +1,20 @@
 Feature: Login Page Tests
   # Examples of login page tests
-  Background:
-    Given Open "dev" environment
+#  Background:
+
 #    Then Verify presents of element "//h5[text()='Login to Your Account']"
 
   @smoke
   Scenario: Login with correct credentials
+    Given Open "dev" environment
     Then Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
-    Then AB Type "pcs.automationclass@gmail.com" into "//input[@name='username']"
     Then Type "1234567" into "//input[@name='password']"
     Then Click element "//button[text()=' Login ']"
     Then Verify presents of element "//h3[text()=' Your device ']"
 
 
   Scenario Outline: Login with incorrect user name
+    Given Open "dev" environment
     Then Type "<username>" into "//input[@name='username']"
     Then Type "<password>" into "//input[@name='password']"
     Then Click element "//button[text()=' Login ']"
@@ -25,6 +26,7 @@ Feature: Login Page Tests
       | pcs2@gmail.com | hr9rsHU6TnWDYnpy |
 
   Scenario Outline: Login with empty user name and or password
+    Given Open "dev" environment
     Then Type "<username>" into "//input[@name='username']"
     Then Type "<password>" into "//input[@name='password']"
     Then Click element "//button[text()=' Login ']"
@@ -38,6 +40,7 @@ Feature: Login Page Tests
 
 
   Scenario: Login with incorrect password
+    Given Open "dev" environment
     Then Type "pcs.automationclass+1@gmail.com" into "//input[@name='username']"
     Then Type "2" into "//input[@name='password']"
     Then Click element "//button[text()=' Login ']"
