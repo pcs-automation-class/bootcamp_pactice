@@ -1,8 +1,6 @@
 from time import sleep
 from behave import step
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 @step('AXV Open "{env}" environment')
@@ -48,7 +46,7 @@ def verify_title(context, text):
 def verify_presents_of_element(context, xpath):
     if xpath != "Skip":
         # print(f"Verify element with xpath {xpath} presents")
-        elements = context.driver.find_element(By.XPATH, xpath)
+        elements = context.driver.find_elements(By.XPATH, xpath)
         # elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
         assert len(elements) == 1
     else:
@@ -82,21 +80,22 @@ def click_button(context, name):
 def open_active_jumps_menu(context):
     pass
 
+
 @step("AXV Go to menu devices")
 def step_impl(context):
     pass
 
 
 @step("AXV Go to menu records")
-def step_impl(context):
+def step_impl1(context):
     pass
 
 
 @step("AXV Go to menu logbook")
-def step_impl(context):
+def step_impl2(context):
     pass
 
 
 @step("AXV Go to menu group jumps")
-def step_impl(context):
+def step_impl3(context):
     pass
