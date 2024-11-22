@@ -1,8 +1,3 @@
-from calendar import firstweekday
-
-from pipenv.patched.safety.models import announcement_nmt
-
-
 class Animals:
     name = ""
     age = 0
@@ -36,6 +31,7 @@ class WhiteCat(Cat):
 
     def print_name(self):
         print(f"Name: {self.name}")
+
 
 # my_cat = WhiteCat()
 # cat = WhiteCat()
