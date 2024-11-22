@@ -22,7 +22,7 @@ class OMLoginPage:
 
     def clear_username(self):
         # element = self.driver.find_element(*self.username)
-        element = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(self.username))
+        element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.username))
         element.click()
         element.send_keys(Keys.COMMAND + "a")
         element.send_keys(Keys.DELETE)
@@ -44,12 +44,3 @@ class OMLoginPage:
     def create_account(self, create_account):
         element = self.driver.find_element(*self.create_account)
         element.send_keys(create_account)
-
-
-
-
-
-
-
-
-
