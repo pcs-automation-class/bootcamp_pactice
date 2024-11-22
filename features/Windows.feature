@@ -13,3 +13,9 @@ Feature: Switch windows
     Then Wait 10 seconds
 
 # TODO Finish test when will have some element on new page
+
+  Scenario: New scenario
+    Given Login as "test_1" in "dev" environment
+    Then Click button "Settings"
+    Then Click button "Billing"
+    Then New step
