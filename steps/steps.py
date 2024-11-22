@@ -155,5 +155,5 @@ def click_login_btn(context):
 
 
 @step("New step")
-def step_impl(context):
+def new_step(context):
     print("New step")
