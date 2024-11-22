@@ -19,3 +19,10 @@ Feature: Switch windows
     Then Click button "Customer Portal"
     Then Wait 10 seconds
     Then New step
+
+
+  Scenario: New scenario
+    Given Login as "test_1" in "dev" environment
+    Then Click button "Settings"
+    Then Click button "Billing"
+    Then New step
