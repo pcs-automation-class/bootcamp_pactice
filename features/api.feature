@@ -19,5 +19,5 @@ Feature: Test API
       | latitude  | 37.770198       |
       | longitude | -121.641856     |
       | battery   | 10              |
-#      states: idle, on, off
-      | state     | off             |
+#      states: idle, on, off, alert
+      | state     | alert             |
