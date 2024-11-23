@@ -225,6 +225,3 @@ def verify_updated_device_name_presence(context, new_name):
     except TimeoutException:
         print(f"Timeout: Updated device name '{new_name}' not found with xpath: {xpath}")
         raise
-
-
-
