@@ -32,6 +32,8 @@ def add_new_device_heartbeat_msg(context):
         state = 1
     elif data['state'] == "off":
         state = 2
+    elif data['state'] == "alert":
+        state = 3
     else:
         state = 0
     message = (f"{data['imei']},4.05,12.0,39.11,-66,ATT, {data['date']}190424.000,"

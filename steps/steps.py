@@ -152,3 +152,8 @@ def enter_password(context, pwd):
 @step("Click login button")
 def click_login_btn(context):
     context.login_page.click_login_button()
+
+
+@step("New step")
+def new_step(context):
+    print("New step")
