@@ -21,4 +21,4 @@ Feature: Devices_Test Automation
      And OM Wait 2 seconds
      Then OM Click button "+ Add new device"
      And OM Wait 2 seconds
-#     Then OM Verify the pop-up message "New device has been added" is displayed
+     Then OM Verify the pop-up message "New device has been added" is displayed

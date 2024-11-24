@@ -168,7 +168,8 @@ def choose_from_dropdown(context, imei, dropdown_menu):
 
 @step('OM Verify the pop-up message "{message}" is displayed')
 def OM_verify_popup_message(context, message):
-    popup_xpath = f"//div[contains(text(), '{message}')]"
+
+    popup_xpath = "//div[contains(@class, 'el-message') and contains(@class, 'el-message--success')]"
 
     try:
 
