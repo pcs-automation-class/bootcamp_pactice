@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 
-# Function to open a URL in the specified environment
+
 @step('CK Open "{env}" environment')
 def open_url(context, env):
     environments = {
