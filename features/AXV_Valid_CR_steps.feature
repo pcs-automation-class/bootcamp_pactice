@@ -1,6 +1,4 @@
-# Created by Anna at 11/12/24
 Feature: Login with Valid ID and PW
-  # Enter feature description here
 
 Background:
   Given AXV Open "dev" environment
