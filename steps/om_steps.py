@@ -136,7 +136,7 @@ def OM_clear_field(context, xpath):
 
 
 @step('OM Pop-up window "{xpath}" should appear')
-def OM_window_open(context, xpath):
+def OM_window_opened(context, xpath):
     element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
     print(f"Pop-up window with text: {element.text} ")
 
