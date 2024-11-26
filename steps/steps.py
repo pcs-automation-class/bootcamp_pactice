@@ -60,7 +60,9 @@ def ab_click_button(context, name):
         'Log out': "//span[text()='Log out']",
         'Subscribe': "//a[text()='Subscribe']",
         'Update': "//button/span[text()='Update']",
-
+        'Settings': "//a[contains(@class, 'profile-btn')]",
+        'Billing': "//button[text()='Billing']",
+        'Customer Portal': "//button[text()='Customer Portal']"
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
@@ -130,3 +132,28 @@ def clear_field(context, xpath):
     element.click()
     element.send_keys(Keys.COMMAND + "a")
     element.send_keys(Keys.DELETE)
+
+
+@step('Enter username for user "{name}"')
+def enter_username(context, name):
+    context.login_page.enter_username(context.credentials[name]['username'])
+
+
+@step('Clear username')
+def clear_username(context):
+    context.login_page.clear_username()
+
+
+@step('Enter password for user "{pwd}"')
+def enter_password(context, pwd):
+    context.login_page.enter_password(context.credentials[pwd]['password'])
+
+
+@step("Click login button")
+def click_login_btn(context):
+    context.login_page.click_login_button()
+
+
+@step("New step")
+def new_step(context):
+    print("New step")

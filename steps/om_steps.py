@@ -1,10 +1,8 @@
 from time import sleep
 
 from behave import step
-from selenium.common import TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -62,9 +60,8 @@ def OM_click_button(context, name):
         'Log out': "//span[text()='Log out']",
         'Subscribe': "//a[text()='Subscribe']",
         'Update': "//button/span[text()='Update']",
-        'Edit': "(//button[contains(text(), ' Edit ')])[1]",
-        'Add new device': "//span[contains(text(), 'Add new device')]",
-        '+ Add new device': "//div[@class='form-submit']"
+        'Edit': "(//button[contains(text(), ' Edit ')])[1]"
+
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
@@ -134,54 +131,12 @@ def OM_clear_field(context, xpath):
     element.send_keys(Keys.COMMAND + "a")
     element.send_keys(Keys.DELETE)
 
-
-@step('OM Pop-up window "{xpath}" should appear')
-def OM_window_opened(context, xpath):
-    element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
-    print(f"Pop-up window with text: {element.text} ")
-
-
-@step('I choose "{imei}" from the "{dropdown_menu}"')
-def choose_from_dropdown(context, imei, dropdown_menu):
-    dropdown_menu_xpath = dropdown_menu
-
-    class_name = "el-scrollbar__view el-select-dropdown__list"
-    imei_xpath = f"//ul[@class='{class_name}']"
-
-    # imei_xpath = f"//ul[@class='el-scrollbar__view el-select-dropdown__list']"
-
-    # Wait for the dropdown menu to be clickable and click it
-    dropdown_element = WebDriverWait(context.driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, dropdown_menu_xpath))
-    )
-    dropdown_element.click()
-
-    # Wait for the option to appear and click it
-    option_element = WebDriverWait(context.driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, imei_xpath))
-    )
-    option_element.click()
-
-    # Confirmation log
-    print(f"Selected imei: '{imei}' from the dropdown menu.")
-
-
-@step('OM Verify the pop-up message "{message}" is displayed')
-def OM_verify_popup_message(context, message):
-
-    popup_xpath = "//div[contains(@class, 'el-message') and contains(@class, 'el-message--success')]"
-
-    try:
-
-        popup_element: WebElement = WebDriverWait(context.driver, 10).until(
-          EC.presence_of_element_located((By.XPATH, popup_xpath))
-        )
-
-# Fetch the test of message
-        popup_text = popup_element.text
-        print(f"Pop-up message capture: {popup_text}")
-
-        assert message in popup_text, f"{popup_text} not found in pop-up"
-
-    except TimeoutException:
-        raise AssertionError(f"Pop-up message {message} did not appear in pop-up")
+# Tried to clear input
+# @step("OM Clear input field")
+# def OM_clear_field(context,xpath):
+#     try:
+#         field = WebDriverWait(context.driver,10).until(EC.visibility_of_element_located((By.XPATH,xpath)))
+#         field.clear()
+#         print("Field is cleared")
+#     except Exception as e:
+#         print(f"Error: {e}")
