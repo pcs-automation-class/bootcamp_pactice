@@ -60,8 +60,8 @@ def OM_click_button(context, name):
         'Log out': "//span[text()='Log out']",
         'Subscribe': "//a[text()='Subscribe']",
         'Update': "//button/span[text()='Update']",
-        'Edit': "(//button[contains(text(), ' Edit ')])[1]"
-
+        'Edit': "(//button[contains(text(), ' Edit ')])[1]",
+        'Add new device': "//span[contains(text(),'Add new device')]"
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
@@ -131,12 +131,32 @@ def OM_clear_field(context, xpath):
     element.send_keys(Keys.COMMAND + "a")
     element.send_keys(Keys.DELETE)
 
-# Tried to clear input
-# @step("OM Clear input field")
-# def OM_clear_field(context,xpath):
-#     try:
-#         field = WebDriverWait(context.driver,10).until(EC.visibility_of_element_located((By.XPATH,xpath)))
-#         field.clear()
-#         print("Field is cleared")
-#     except Exception as e:
-#         print(f"Error: {e}")
+
+@step("OM Pop-up window should appear")
+def window_appear(context):
+    OM_verify_presents_of_element(context, "//h3[@class='modal-title']")
+
+
+@step('OM Enter username "{name}"')
+def OM_enter_username(context, name):
+    context.login_page.enter_username(name)
+
+
+@step('OM Clear username')
+def OM_clear_username(context):
+    context.login_page.OM_clear_username()
+
+
+@step('OM Enter password "{pwd}"')
+def OM_enter_password(context, pwd):
+    context.login_page.enter_password(pwd)
+
+
+@step("OM Click login button")
+def OM_click_login_btn(context):
+    context.login_page.click_login_button()
+
+#
+# @step('OM Click element "{forgot_password}"')
+# def OM_forgot_password(context, forgot_password):
+#     context.login_page.forgot_password(forgot_password)
