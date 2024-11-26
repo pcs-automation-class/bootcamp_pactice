@@ -4,16 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException
-import json
 
-# Function to open a URL in the specified environment
+
 @step('CK Open "{env}" environment')
 def open_url(context, env):
-    # Environments dictionary placed inside the function
     environments = {
         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
         "prod": "https://app.linkmygear.com",
-        # Add other environments as needed
     }
 
     try:
@@ -54,13 +51,11 @@ def verify_presence_of_element(context, element_name):
         print("Step is skipped")
         return
 
-    # Check if the identifier is a known element name or an XPath
     elements_map = {
         "Name": "//span[text()='{new_name}']",
-        # Add other element names as needed
     }
 
-    xpath = elements_map.get(element_name, element_name)  # Use XPath directly if not in elements_map
+    xpath = elements_map.get(element_name, element_name)
 
     try:
         elements = WebDriverWait(context.driver, 20).until(
@@ -106,6 +101,7 @@ def ck_click_button(context, name):
     )
     button_element.click()
 
+
 # Updated function to wait for element visibility
 def wait_for_element_visibility(context, xpath):
     try:
@@ -115,7 +111,7 @@ def wait_for_element_visibility(context, xpath):
         return element
     except TimeoutException:
         print(f"Timeout: Element with xpath '{xpath}' not found or not visible.")
-        context.driver.save_screenshot("timeout_error_screenshot.png")  # Save screenshot for debugging
+        context.driver.save_screenshot("timeout_error_screenshot.png")
         raise
 
 
@@ -124,26 +120,17 @@ def wait_for_element_visibility(context, xpath):
 def wait_sec(context, sec):
     sleep(int(sec))
 
+
 # Function for clicking an element
 @step('CK Click element by XPath "{xpath}"')
 def click_element(context, xpath):
-    element = context.driver.find_element(By.XPATH, xpath)
-    # element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath)))
     element.click()
 
-# Function for typing text into a specific xpath
-@step('CK Type "{text}" into "{xpath}"')
-def type_text(context, text, xpath):
-    if text.lower() == "none":
-        text = ""  # Convert 'none' to an empty string
-    if text != "Skip":
-        element = context.driver.find_element(By.XPATH, xpath)
-        element.send_keys(text)
 
 # Function for renaming a field with test data
 @step('CK Rename "{field_name}" to "{new_name}"')
 def rename_name_field(context, field_name, new_name):
-    # Dictionary of field XPaths
     fields = {
         'Name': "//div[@class='el-input__wrapper']//input[contains(@class, 'el-input__inner')]",
     }
@@ -152,7 +139,6 @@ def rename_name_field(context, field_name, new_name):
         raise ValueError(f"Field name '{field_name}' not found in fields dictionary.")
 
     try:
-        # Locate the field element using a more generous wait time and suitable condition
         field_element = WebDriverWait(context.driver, 15).until(
             EC.visibility_of_element_located((By.XPATH, fields[field_name]))
         )
@@ -161,6 +147,7 @@ def rename_name_field(context, field_name, new_name):
     except TimeoutException:
         print(f"Timeout: Could not find or interact with the element '{field_name}' with XPath '{fields[field_name]}'.")
         raise
+
 
 # Function to open the Device Settings window
 @step("CK Open window Device Settings")
@@ -197,11 +184,13 @@ def open_device_settings(context, imei):
     )
     element.click()
 
+
+# Function to verify a pop-up message
 @step('CK Verify pop-up message for "{device_name}"')
 def verify_popup_message_step(context, device_name):
     verify_popup_message(context, device_name)
 
-# Function to verify a pop-up message
+
 def verify_popup_message(context, device_name):
     expected_message = f"{device_name} succesfully updated"
     popup_xpath = "//div[contains(@class, 'el-message') and contains(@class, 'el-message--success')]"
@@ -211,11 +200,11 @@ def verify_popup_message(context, device_name):
     actual_message = popup_element.text
     assert expected_message in actual_message, f"Expected message: '{expected_message}', but got: '{actual_message}'"
 
+
+# Function to verify updated device name presence
 @step('CK Verify updated device name presence "{new_name}"')
 def verify_updated_device_name_presence(context, new_name):
-    # Construct the XPath dynamically for the updated device name
     xpath = f"//span[text()='{new_name}']"
-
     try:
         elements = WebDriverWait(context.driver, 20).until(
             EC.presence_of_all_elements_located((By.XPATH, xpath))
@@ -225,6 +214,3 @@ def verify_updated_device_name_presence(context, new_name):
     except TimeoutException:
         print(f"Timeout: Updated device name '{new_name}' not found with xpath: {xpath}")
         raise
-
-
-
