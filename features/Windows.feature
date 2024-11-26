@@ -26,3 +26,12 @@ Feature: Switch windows
     Then Click button "Settings"
     Then Click button "Billing"
     Then New step
+
+
+    Scenario: Google search
+      Given Open google page
+      Then Type "pep 8" into "//textarea[@aria-label='Search']"
+#      Then Click element "//img[@alt='Google']"
+      Then Click element "//div[@class='FPdoLc lJ9FBc']//input[@aria-label='Google Search']"
+      Then Verify presents of element "//h3[contains(text(), 'PEP 8')]"
+      Then Wait 3 seconds
