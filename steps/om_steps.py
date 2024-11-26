@@ -211,7 +211,6 @@ def OM_enter_password(context, pwd):
 def OM_click_login_btn(context):
     context.login_page.click_login_button()
 
-
 # @step('OM Click element "{forgot_password}"')
 # def OM_forgot_password(context, forgot_password):
 #     context.login_page.forgot_password(forgot_password)
