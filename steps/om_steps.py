@@ -65,6 +65,8 @@ def OM_click_button(context, name):
         'Edit': "(//button[contains(text(), ' Edit ')])[1]",
         'Add new device': "//span[contains(text(), 'Add new device')]",
         '+ Add new device': "//div[@class='form-submit']",
+        'Delete': "(//button[@class='lmg-btn lmg-btn--sm lmg-btn--w-100 lmg-btn--red'])[1]",
+        'Delete_1': "//button[@class='lmg-btn lmg-btn--red']",
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
