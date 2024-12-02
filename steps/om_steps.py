@@ -67,6 +67,8 @@ def OM_click_button(context, name):
         '+ Add new device': "//div[@class='form-submit']",
         'Delete': "(//button[@class='lmg-btn lmg-btn--sm lmg-btn--w-100 lmg-btn--red'])[1]",
         'Delete_1': "//button[@class='lmg-btn lmg-btn--red']",
+        'Add new jump': "//span[contains(text(),'Add new jump')]",
+        'Finish': "(//div[@class='logb-step-nav__force']//button[contains(text(), 'Finish')])[1]",
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
@@ -90,8 +92,12 @@ def OM_step_impl_1(context):
 
 
 @step("OM Click menu LogBook")
-def OM_step_impl_2(context):
+def OM_menu_Logbook(context):
     pass
+    # xpath = "//a[contains(text(),'LogBook')]"
+    # # Locate the LogBook menu item
+    # element = context.driver.find_element(By.XPATH, xpath)
+    # element.click()
 
 
 @step("OM Click menu Group Jumps")
@@ -123,7 +129,7 @@ def OM_click_menu(context, item):
         'Active Jumps': "//a[text()='Active Jumps']",
         'Devices': "//a[text()='Devices']",
         'Records': "//a[text()='Records']",
-        'Logbook': "//a[text()='LogBook']",
+        'LogBook': "//a[text()='LogBook']",
         'Group Jumps': "//a[text()='Group Jumps']",
     }
     OM_click_element(context, items[item])
@@ -145,18 +151,18 @@ def OM_window_opened(context, xpath):
 
 @step('I choose "{imei}" from the "{dropdown_menu}"')
 def choose_from_dropdown(context, imei, dropdown_menu):
-    dropdown_menu_xpath = dropdown_menu
+    # dropdown_menu_xpath = dropdown_menu
 
-    class_name = "el-scrollbar__view el-select-dropdown__list"
-    imei_xpath = f"//ul[@class='{class_name}']"
+    class_name = "el-select__wrapper el-tooltip__trigger el-tooltip__trigger"
+    imei_xpath = f"//div[@class='{class_name}']"
 
     # imei_xpath = f"//ul[@class='el-scrollbar__view el-select-dropdown__list']"
 
     # Wait for the dropdown menu to be clickable and click it
-    dropdown_element = WebDriverWait(context.driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, dropdown_menu_xpath))
-    )
-    dropdown_element.click()
+    # dropdown_element = WebDriverWait(context.driver, 10).until(
+    #     EC.element_to_be_clickable((By.XPATH, dropdown_menu_xpath))
+    # )
+    # dropdown_element.click()
 
     # Wait for the option to appear and click it
     option_element = WebDriverWait(context.driver, 10).until(
@@ -213,6 +219,17 @@ def OM_enter_password(context, pwd):
 def OM_click_login_btn(context):
     context.login_page.click_login_button()
 
-# @step('OM Click element "{forgot_password}"')
-# def OM_forgot_password(context, forgot_password):
-#     context.login_page.forgot_password(forgot_password)
+
+@step('OM Enter "{date}" in "{field}"')
+def OM_enter_date_in_field(context, date, field):
+    try:
+        field_xpath = "//input[@placeholder='Select date']"
+        date_field = WebDriverWait(context.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, field_xpath))
+        )
+        date_field.send_keys(date)
+        # Simulate pressing Enter
+        date_field.send_keys(Keys.RETURN)
+        print(f"Date: {date} entered")
+    except Exception as e:
+        raise AssertionError(f"Failed to enter date in field {field}: {e}")
