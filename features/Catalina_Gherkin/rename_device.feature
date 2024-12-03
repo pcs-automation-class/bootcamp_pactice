@@ -4,7 +4,7 @@ Feature: Test devices
 
   Scenario Outline: Rename Device
     Given CK Login as "test_1" in "dev" environment
-    Then CK Open window Device Settings
+    Then CK Open window "Device Settings"
     Then Wait 2 seconds
     Then CK Click button "Edit"
     Then CK Rename "Name" to "<new_name>"
