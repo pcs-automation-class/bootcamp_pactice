@@ -67,6 +67,9 @@ def OM_click_button(context, name):
         '+ Add new device': "//div[@class='form-submit']",
         'Delete': "(//button[@class='lmg-btn lmg-btn--sm lmg-btn--w-100 lmg-btn--red'])[1]",
         'Delete_1': "//button[@class='lmg-btn lmg-btn--red']",
+        'View': "//button[contains(text(), 'View')]",
+        'Delete jump': "//button[contains(text(), 'Delete')]",
+        'Delete LobBook': "//button[@class= 'lmg-btn lmg-btn--red']",
         'Add new jump': "//span[contains(text(),'Add new jump')]",
         'Finish': "(//div[@class='logb-step-nav__force']//button[contains(text(), 'Finish')])[1]",
     }
@@ -92,7 +95,7 @@ def OM_step_impl_1(context):
 
 
 @step("OM Click menu LogBook")
-def OM_menu_Logbook(context):
+def OM_step_impl_2(context):
     pass
     # xpath = "//a[contains(text(),'LogBook')]"
     # # Locate the LogBook menu item
@@ -129,7 +132,7 @@ def OM_click_menu(context, item):
         'Active Jumps': "//a[text()='Active Jumps']",
         'Devices': "//a[text()='Devices']",
         'Records': "//a[text()='Records']",
-        'LogBook': "//a[text()='LogBook']",
+        'Logbook': "//a[text()='LogBook']",
         'Group Jumps': "//a[text()='Group Jumps']",
     }
     OM_click_element(context, items[item])
@@ -151,18 +154,18 @@ def OM_window_opened(context, xpath):
 
 @step('I choose "{imei}" from the "{dropdown_menu}"')
 def choose_from_dropdown(context, imei, dropdown_menu):
-    # dropdown_menu_xpath = dropdown_menu
+    dropdown_menu_xpath = dropdown_menu
 
-    class_name = "el-select__wrapper el-tooltip__trigger el-tooltip__trigger"
-    imei_xpath = f"//div[@class='{class_name}']"
+    class_name = "el-scrollbar__view el-select-dropdown__list"
+    imei_xpath = f"//ul[@class='{class_name}']"
 
     # imei_xpath = f"//ul[@class='el-scrollbar__view el-select-dropdown__list']"
 
     # Wait for the dropdown menu to be clickable and click it
-    # dropdown_element = WebDriverWait(context.driver, 10).until(
-    #     EC.element_to_be_clickable((By.XPATH, dropdown_menu_xpath))
-    # )
-    # dropdown_element.click()
+    dropdown_element = WebDriverWait(context.driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, dropdown_menu_xpath))
+    )
+    dropdown_element.click()
 
     # Wait for the option to appear and click it
     option_element = WebDriverWait(context.driver, 10).until(
@@ -218,6 +221,23 @@ def OM_enter_password(context, pwd):
 @step("OM Click login button")
 def OM_click_login_btn(context):
     context.login_page.click_login_button()
+
+# @step('OM Click element "{forgot_password}"')
+# def OM_forgot_password(context, forgot_password):
+#     context.login_page.forgot_password(forgot_password)
+
+
+@step('OM Verify "{element_name}" not presents')
+def element_not_present(context, element_name):
+    try:
+        elements = context.driver.find_elements(By.XPATH, f"//div[contains(text(), '{element_name}')]")
+
+        if elements:
+            raise AssertionError(f"Element '{element_name}' is still present on the page.")
+        else:
+            print(f"Element '{element_name}' is not present on the page, as expected.")
+    except Exception as error:  # Handle unexpected exceptions
+        raise AssertionError(f"Failed to verify absence of element '{element_name}': {error}")
 
 
 @step('OM Enter "{date}" in "{field}"')
