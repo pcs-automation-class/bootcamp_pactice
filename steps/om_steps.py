@@ -70,6 +70,7 @@ def OM_click_button(context, name):
         'View': "//button[contains(text(), 'View')]",
         'Delete jump': "//button[contains(text(), 'Delete')]",
         'Delete LobBook': "//button[@class= 'lmg-btn lmg-btn--red']",
+        'Edit log': "//button[contains(text(), 'Edit')]",
         'Add new jump': "//span[contains(text(),'Add new jump')]",
         'Finish': "(//div[@class='logb-step-nav__force']//button[contains(text(), 'Finish')])[1]",
     }
