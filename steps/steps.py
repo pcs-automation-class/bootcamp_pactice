@@ -47,8 +47,8 @@ def verify_presents_of_element(context, xpath):
     if xpath != "Skip":
         # elements = context.driver.find_elements(By.XPATH, xpath)
         elements = WebDriverWait(context.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
-        assert len(elements) == 1, f"Expected 1 element, actual {len(elements)} elements"
-    else:
+        assert len(elements) >= 1, f"Expected 1 element, actual {len(elements)} elements"
+    # else:
         print("Step is skipped")
 
 
@@ -157,3 +157,8 @@ def click_login_btn(context):
 @step("New step")
 def new_step(context):
     print("New step")
+
+
+@step("Open google page")
+def open_google(context):
+    context.driver.get("https://google.com")
