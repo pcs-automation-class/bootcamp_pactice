@@ -70,6 +70,8 @@ def OM_click_button(context, name):
         'View': "//button[contains(text(), 'View')]",
         'Delete jump': "//button[contains(text(), 'Delete')]",
         'Delete LobBook': "//button[@class= 'lmg-btn lmg-btn--red']",
+        'Add new jump': "//span[contains(text(),'Add new jump')]",
+        'Finish': "(//div[@class='logb-step-nav__force']//button[contains(text(), 'Finish')])[1]",
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, buttons[name])))
@@ -95,6 +97,10 @@ def OM_step_impl_1(context):
 @step("OM Click menu LogBook")
 def OM_step_impl_2(context):
     pass
+    # xpath = "//a[contains(text(),'LogBook')]"
+    # # Locate the LogBook menu item
+    # element = context.driver.find_element(By.XPATH, xpath)
+    # element.click()
 
 
 @step("OM Click menu Group Jumps")
@@ -232,3 +238,18 @@ def element_not_present(context, element_name):
             print(f"Element '{element_name}' is not present on the page, as expected.")
     except Exception as error:  # Handle unexpected exceptions
         raise AssertionError(f"Failed to verify absence of element '{element_name}': {error}")
+
+
+@step('OM Enter "{date}" in "{field}"')
+def OM_enter_date_in_field(context, date, field):
+    try:
+        field_xpath = "//input[@placeholder='Select date']"
+        date_field = WebDriverWait(context.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, field_xpath))
+        )
+        date_field.send_keys(date)
+        # Simulate pressing Enter
+        date_field.send_keys(Keys.RETURN)
+        print(f"Date: {date} entered")
+    except Exception as e:
+        raise AssertionError(f"Failed to enter date in field {field}: {e}")
