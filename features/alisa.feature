@@ -4,6 +4,8 @@ Feature: # Login page tests
   Background:
     Given Open "dev" environment
     Then Verify presence of element "//h5[text()='Login to Your Account']"
+Feature: # Login page tests
+  # Examples of login page tests
 
   Scenario: Login w correct credentials
     Then Type "alisawins7+gear@gmail.com" into "//input[@name='username']"
@@ -25,3 +27,9 @@ Feature: # Login page tests
       | notgooduser@gmail.com | aVhTpLSLF2TSKi4Y |
       | user3invalid@gmail.com | aVhTpLSLF2TSKi4Y|
       | user4invalid@gmail.com | aVhTpLSLF2TSKi4Y |
+  Scenario: Login w correct credentials
+    Given Open "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.Linkmygear.com"
+    Then Wait 3 seconds
+    Then Verify presence of element "//h5[text()='Login to Your Account']"
+    Then Wait 3 seconds
+
