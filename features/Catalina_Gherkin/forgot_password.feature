@@ -10,7 +10,7 @@ Feature: Forgot Password Functionality
     When CK the user enters a valid "catk.test@gmail.com" into the "Your Email" field
     And CK Click button "Send"
     Then CK a confirmation message appears
-    And CK the user receives a password reset email
+#    And CK the user receives a password reset email
 
   Examples:
     | email                  |

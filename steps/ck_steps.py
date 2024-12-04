@@ -126,7 +126,8 @@ def ck_click_button(context, name):
     button_element = WebDriverWait(context.driver, 20).until(
         EC.visibility_of_element_located((By.XPATH, button_xpath))
     )
-    context.driver.execute_script("arguments[0].click();", button_element)
+    button_element.click()
+    # context.driver.execute_script("arguments[0].click();", button_element)
     print(f"DEBUG: Clicked button: {name}")
 
 
