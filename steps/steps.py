@@ -157,3 +157,26 @@ def click_login_btn(context):
 @step("New step")
 def new_step(context):
     print("New step")
+
+
+@step('Click show on map button for "{device_name}"')
+def click_show_on_map(context, device_name):
+    elements = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located(
+        (By.XPATH, "//div[./div[@class='lmg-device__info']]")))
+    for element in elements:
+        if device_name in element.text:
+            buttons = element.find_elements(By.XPATH, ".//button")
+            # print(buttons[0].get_attribute("class"))
+            assert buttons[0].is_enabled(), "Button desktop not clickable"
+            assert buttons[1].is_enabled(), "Button mobile not clickable"
+            tablet = buttons[1].is_displayed()
+            # if buttons[0].is_displayed():
+            #     buttons[0].click()
+            # else:
+            #     buttons[1].click()
+
+            for button in buttons:
+                if "hidden-on-tablet" in button.get_attribute("class") and not tablet:
+                    button.click()
+                elif "show-on-tablet" in button.get_attribute("class") and tablet:
+                    button.click()
