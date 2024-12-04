@@ -32,6 +32,7 @@ def before_scenario(context, scenario):
             assert False, "Unknown browser!"
 
         context.driver.maximize_window()
+        # context.driver.set_window_size(430, 932)
         context.login_page = LoginPage(context.driver)
         context.ab_login_page = ABLoginPage(context.driver)
 
