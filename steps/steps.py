@@ -169,14 +169,43 @@ def click_show_on_map(context, device_name):
             # print(buttons[0].get_attribute("class"))
             assert buttons[0].is_enabled(), "Button desktop not clickable"
             assert buttons[1].is_enabled(), "Button mobile not clickable"
-            tablet = buttons[1].is_displayed()
-            # if buttons[0].is_displayed():
-            #     buttons[0].click()
-            # else:
-            #     buttons[1].click()
+            # tablet = buttons[1].is_displayed()
+            if buttons[0].is_displayed():
+                buttons[0].click()
+            else:
+                buttons[1].click()
 
-            for button in buttons:
-                if "hidden-on-tablet" in button.get_attribute("class") and not tablet:
-                    button.click()
-                elif "show-on-tablet" in button.get_attribute("class") and tablet:
-                    button.click()
+            # for button in buttons:
+            #     if "hidden-on-tablet" in button.get_attribute("class") and not tablet:
+            #         button.click()
+            #     elif "show-on-tablet" in button.get_attribute("class") and tablet:
+            #         button.click()
+
+
+@step('Click show device "{device_name}" on map')
+def show_device_on_map(context, device_name):
+    device_names = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located(
+        (By.XPATH, "//div[@class='lmg-device__info']/h4")))
+    desktop_buttons = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located(
+        (By.XPATH, "//div[@class='lmg-device__btns']/button[contains(@class, 'hidden-on-tablet')]")))
+    tablet_buttons = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located(
+        (By.XPATH, "//div[@class='lmg-device__btns']/button[contains(@class, 'show-on-tablet')]")))
+    devices = list(zip(device_names, desktop_buttons, tablet_buttons))
+
+    for device in devices:
+        if device_name in device[0].text:
+            assert device[1].is_enabled(), "Button desktop not clickable"
+            assert device[2].is_enabled(), "Button mobile not clickable"
+
+            if device[1].is_displayed():
+                device[1].click()
+            else:
+                device[2].click()
+
+
+@step('Open news with text "{text}"')
+def open_news(context, text):
+    news = WebDriverWait(context.driver, 15).until(EC.presence_of_element_located(
+        (By.XPATH, f"//div[./h4[contains(text(), '{text}')]]//button")))
+    context.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", news)
+    news.click()
