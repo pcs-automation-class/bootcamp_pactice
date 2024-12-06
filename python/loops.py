@@ -1,4 +1,3 @@
-from email.utils import make_msgid
 
 my_list = []
 s = "andreybaykov"
